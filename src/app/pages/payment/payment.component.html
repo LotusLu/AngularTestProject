@@ -3,7 +3,7 @@
         <div class="input-group">
             <input type="text" placeholder="{{selectFileName}}" readonly >
             <span class="input-group-btn">
-              <input style="display:none" type="file" (change)="onFileSelect($event);" #fileInput >
+              <input style="display:none" type="file" (change)="onFileSelect($event);" accept=".csv,.txt,.json" #fileInput >
               <button class="btn btn-success" type="button" (click)="fileInput.click()">Browse</button>
             </span>
         </div>

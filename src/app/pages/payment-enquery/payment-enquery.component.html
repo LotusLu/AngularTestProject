@@ -1,4 +1,4 @@
-
+<!-- 
 <br/><br/><br/><br/>
 <div class="horizontal-scroll">
     <table class="table table-condensed">
@@ -21,4 +21,87 @@
       </tr>
       </tbody>
     </table>
-</div>
+
+
+    <ngx-barcode [bc-value]="1234567" [bc-display-value]="true" [bc-element-type]="img" [bc-height]="65" [bc-background]="transparent"></ngx-barcode>
+    <ngx-barcode [bc-value]="7654321" [bc-display-value]="true" [bc-element-type]="img" [bc-height]="65" [bc-background]="transparent"></ngx-barcode>
+    <ngx-barcode [bc-value]="1234567" [bc-display-value]="true" [bc-element-type]="img" [bc-height]="65" [bc-background]="transparent"></ngx-barcode>
+
+
+
+
+</div> -->
+
+<div *ngFor="let item of paymentEnqueryDatas">
+  <div class="widgets">
+      <div >
+        <div>
+          <div>
+            <ba-card cardTitle="繳款明細" baCardClass="with-scroll">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <div class="form-group">
+                        <label>姓名</label>
+                        <label>{{item.userId}}</label>
+                      </div>
+                    </div>  
+                    <div class="col-sm-3">
+                      <div class="form-group">
+                        <label>繳款名稱</label>
+                        <label>{{item.feeName}}</label>
+                      </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                          <label>繳款期限</label>
+                          <label>{{item.dueDate}}</label>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <div class="form-group">
+                        <label>繳款幣別</label>
+                        <label>{{item.ccy}}</label>
+                      </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                          <label>繳款金額</label>
+                          <label>{{item.amount}}</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                        </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-sm-3">
+                          <div class="form-group">
+                              <ngx-barcode bc-value="{{item.dueDate}}{{item.chargeNumber}}" [bc-display-value]="true" [bc-element-type]="img" [bc-height]="35" [bc-background]="transparent"></ngx-barcode>
+                          </div>
+                      </div>
+                       <div class="col-sm-3">
+                      <div class="form-group">
+                            <ngx-barcode bc-value="{{item.settleNumber}}" [bc-display-value]="true" [bc-element-type]="img" [bc-height]="35" [bc-background]="transparent"></ngx-barcode>
+                      </div>
+                      </div>
+                      <div class="col-sm-3">
+                        <div class="form-group">
+                            <ngx-barcode bc-value="{{item.amount}}" [bc-display-value]="true" [bc-element-type]="img" [bc-height]="35" [bc-background]="transparent"></ngx-barcode>
+                        </div>
+                      </div>
+                  </div>
+              </ba-card>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>  
+
+
+
+
+
+

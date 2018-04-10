@@ -5,9 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgaModule } from '../../theme/nga.module';
 import { PaymentEnqueryComponent } from './payment-enquery.component';
 import { routing } from './payment-enquery.routing';
-
-
-
+import { NgxBarcodeModule } from 'ngx-barcode';
 
 @NgModule({
   imports: [
@@ -16,6 +14,7 @@ import { routing } from './payment-enquery.routing';
     ReactiveFormsModule,
     FormsModule,
     NgaModule,
+    NgxBarcodeModule,
     routing
   ],
   declarations: [
