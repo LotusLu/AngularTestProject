@@ -6,6 +6,7 @@ import { NgaModule } from '../../theme/nga.module';
 
 import { Login } from './login.component';
 import { routing }       from './login.routing';
+import { LoginService } from './login.service';
 
 
 @NgModule({
@@ -19,6 +20,10 @@ import { routing }       from './login.routing';
   ],
   declarations: [
     Login
-  ]
+  ],
+  providers: [    
+    LoginService
+  ],
+
 })
 export class LoginModule {}

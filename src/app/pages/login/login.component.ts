@@ -1,6 +1,8 @@
 import {Component} from '@angular/core';
 import {FormGroup, AbstractControl, FormBuilder, Validators} from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { LoginService } from './login.service';
+import { LoginData } from './login-model/login-model';
 
 @Component({
   selector: 'login',
@@ -8,13 +10,17 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./login.scss']
 })
 export class Login {
-
+  public loginData:LoginData = new LoginData();
   public form:FormGroup;
   public userId:AbstractControl;
   public password:AbstractControl;
   public submitted:boolean = false;
 
-  constructor(fb:FormBuilder,public router: Router,public activatedRoute: ActivatedRoute,) {
+  constructor(fb:FormBuilder,
+              public router: Router,
+              public activatedRoute: ActivatedRoute,
+              public loginService: LoginService,
+             ) {
     this.form = fb.group({
       'userId': ['', Validators.compose([Validators.required, Validators.minLength(4)])],
       'password': ['', Validators.compose([Validators.required, Validators.minLength(4)])]
@@ -22,19 +28,30 @@ export class Login {
 
     this.userId = this.form.controls['userId'];
     this.password = this.form.controls['password'];
-
+    console.log(loginService);
   }
 
-  public onSubmit(values:Object):void {
+  ngOnInit() {
+    //初始化則執行登出動作
+    this.loginService.logout();
+  }
+
+  public onLogin(values:Object):void {
     this.submitted = true;
     if (this.form.valid&&this.checkLogin()) {
-      //將登入人員存入LocalStorage
-      localStorage.setItem("loginUser",this.userId.value);
+      this.filledLoginData();
+      console.log(this.loginData);
+      this.loginService.login(this.loginData);
       //導至首頁
       this.router.navigateByUrl("page/workingSpace");
     }else{
       alert('Username or password is incorrect');
     }
+  }
+
+  private filledLoginData():void{
+    this.loginData.userId=this.userId.value;
+    this.loginData.password=this.password.value;
   }
 
   /**
