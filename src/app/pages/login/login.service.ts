@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 import { Subject } from 'rxjs/Subject';
 import { Http, Headers, Response } from '@angular/http';
 import { LoginData } from '../login/login-model/login-model';
+import { TOKEN, CHANNEL, LOGIN_USER } from '../../app.module';
 
 @Injectable()
 export class LoginService {
@@ -17,14 +18,14 @@ export class LoginService {
   }
 
   public login(user:LoginData){
-    localStorage.setItem("loginUser",user.userId);
+    sessionStorage.setItem(LOGIN_USER,user.userId);
+    sessionStorage.setItem(CHANNEL,user.channel);
     return this.http
             .get(this.userLoginURL)
             .map((response: Response) => {
               let user = response.json();
-              console.log(user);
               if(user && user.token){
-                localStorage.setItem("currentUser",JSON.stringify(user));
+                sessionStorage.setItem(TOKEN,JSON.stringify(user));
                 this.subject.next(Object.assign({},user));
               }
               return response;
@@ -40,8 +41,8 @@ export class LoginService {
   }
 
   public logout():void{
-    localStorage.removeItem("loginUser");
-    localStorage.removeItem("currentUser");
+    sessionStorage.removeItem(LOGIN_USER);
+    sessionStorage.removeItem(TOKEN);
     this.subject.next(Object.assign({}));
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
+import { StartupService } from '../../service/startup.service';
 
 @Component({
   selector: 'app-payment',
@@ -11,9 +12,12 @@ export class PaymentComponent implements OnInit {
   selectedFile:File;
 
 
-  constructor(public http:Http) { }
+  constructor(public http:Http,
+              private startupService: StartupService
+  ) { }
 
   ngOnInit() {
+    this.startupService.checkToken();
     this.selectFileName='請選擇檔案!';
   }
 

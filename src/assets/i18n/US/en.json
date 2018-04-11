@@ -3,6 +3,7 @@
     "title": "Sign in to TaishinBank Demo",
     "userId": "User Id",
     "password": "Password",
+    "channel": "Channel",
     "sign_in": "Sign in"
   },
   "general": {

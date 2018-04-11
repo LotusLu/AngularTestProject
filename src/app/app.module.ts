@@ -16,6 +16,7 @@ import { AppState, InternalStateType } from './app.service';
 import { GlobalState } from './global.state';
 import { NgaModule } from './theme/nga.module';
 import { PagesModule } from './pages/pages.module';
+import { StartupService } from './service/startup.service';
 
 
 // Application wide providers
@@ -23,6 +24,10 @@ const APP_PROVIDERS = [
   AppState,
   GlobalState
 ];
+
+export const TOKEN = 'access_token';
+export const CHANNEL = 'channel';
+export const LOGIN_USER = 'loginUser';
 
 export type StoreType = {
   state: InternalStateType,
@@ -50,7 +55,7 @@ export type StoreType = {
     routing
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
-    APP_PROVIDERS
+    APP_PROVIDERS, StartupService
   ]
 })
 

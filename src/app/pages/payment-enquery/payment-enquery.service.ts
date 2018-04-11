@@ -10,9 +10,10 @@ export class PaymentEnqueryService {
     constructor(public http:Http) {
     }
 
-    public queryPaymentList(searchUserId:string){   
+    public queryPaymentList(searchUserId:string,channel:string){   
         let params = new URLSearchParams();
-        params.set('userId',searchUserId);
+        params.set('searchUserId',searchUserId);
+        params.set('channel',channel);
         return this.http.get(this.paymentEnqueryURL,{search:params});
     }
 

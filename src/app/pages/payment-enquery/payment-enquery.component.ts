@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { PaymentEnqueryData } from './payment-enquery-data/payment-enquery-data.module';
 import { PaymentEnqueryService } from './payment-enquery.service';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
+import { StartupService } from '../../service/startup.service';
+import { CHANNEL } from '../../app.module';
 
 @Component({
   selector: 'app-payment-enquery',
@@ -16,6 +18,7 @@ export class PaymentEnqueryComponent implements OnInit {
 
   constructor(fb:FormBuilder,
               public paymentEnqueryService: PaymentEnqueryService,
+              private startupService: StartupService
              ) {
     this.form = fb.group({
       'userId': ['', Validators.compose([Validators.required, Validators.minLength(4)])],
@@ -24,10 +27,11 @@ export class PaymentEnqueryComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.startupService.checkToken();
   }
 
   public onQuery():void{
-    this.paymentEnqueryService.queryPaymentList(this.userId.value).map(res=>{
+    this.paymentEnqueryService.queryPaymentList(this.userId.value,localStorage.getItem(CHANNEL)).map(res=>{
       let result=res.json();
       console.log(result);
       return result;

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BatchService } from './batch-test.service';
+import { StartupService } from '../../service/startup.service';
 
 @Component({
   selector: 'app-batch-test',
@@ -9,9 +10,12 @@ import { BatchService } from './batch-test.service';
 export class BatchTestComponent implements OnInit {
   responseMsg:any;
 
-  constructor(public batchService: BatchService) { }
+  constructor(public batchService: BatchService,
+              private startupService: StartupService
+  ) { }
 
   ngOnInit() {
+    this.startupService.checkToken();
   }
 
   public onTestBatch():void{
