@@ -6,6 +6,7 @@ import { NgaModule } from '../../theme/nga.module';
 import { PaymentEnqueryComponent } from './payment-enquery.component';
 import { routing } from './payment-enquery.routing';
 import { NgxBarcodeModule } from 'ngx-barcode';
+import { PaymentEnqueryService } from './payment-enquery.service';
 
 @NgModule({
   imports: [
@@ -19,6 +20,9 @@ import { NgxBarcodeModule } from 'ngx-barcode';
   ],
   declarations: [
     PaymentEnqueryComponent
+  ],
+  providers: [
+    PaymentEnqueryService
   ]
 })
 export class PaymentEnqueryModule {}

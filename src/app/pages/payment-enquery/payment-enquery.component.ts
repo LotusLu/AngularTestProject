@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PaymentEnqueryData } from './payment-enquery-data/payment-enquery-data.module';
+import { PaymentEnqueryService } from './payment-enquery.service';
+import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-payment-enquery',
@@ -8,34 +10,34 @@ import { PaymentEnqueryData } from './payment-enquery-data/payment-enquery-data.
 })
 export class PaymentEnqueryComponent implements OnInit {
   paymentEnqueryDatas: PaymentEnqueryData[] = [];
- 
+  
+  public form:FormGroup;
+  public userId:AbstractControl;
 
-  constructor() { }
-
-  ngOnInit() {
-    this.loadAllData();
+  constructor(fb:FormBuilder,
+              public paymentEnqueryService: PaymentEnqueryService,
+             ) {
+    this.form = fb.group({
+      'userId': ['', Validators.compose([Validators.required, Validators.minLength(4)])],
+    });
+    this.userId = this.form.controls['userId'];
   }
 
-  private loadAllData() {
-    this.paymentEnqueryDatas= [{
-      userId:'Lotus',
-      feeName:'信用卡費',
-      dueDate:'20180409',
-      chargeNumber:'014',
-      settleNumber:'1234567890123456',
-      ccy:'TWD',
-      amount:100,
-      state:''
-     },{
-       userId:'Lotus',
-       feeName:'電話費',
-       dueDate:'20180410',
-       chargeNumber:'068',
-       settleNumber:'0123456123456789',
-       ccy:'TWD',
-       amount:200,
-       state:''
-      }];
+  ngOnInit() {
+  }
+
+  public onQuery():void{
+    this.paymentEnqueryService.queryPaymentList(this.userId.value).map(res=>{
+      let result=res.json();
+      console.log(result);
+      return result;
+    }).subscribe(
+			res=>{
+				this.paymentEnqueryDatas = res["items"];
+			},
+			error => {console.log(error)},
+			() => {}
+		);
   }
 
 }

@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgaModule } from '../../theme/nga.module';
 import { BatchTestComponent } from './batch-test.component';
 import { routing } from '../batch-test/batch-test.routing';
+import { BatchService } from './batch-test.service';
 
 
 
@@ -20,6 +21,9 @@ import { routing } from '../batch-test/batch-test.routing';
   ],
   declarations: [
     BatchTestComponent
+  ],
+  providers: [
+    BatchService
   ]
 })
 export class BatchModule {}

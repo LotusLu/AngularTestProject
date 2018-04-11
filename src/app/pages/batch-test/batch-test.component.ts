@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BatchService } from './batch-test.service';
 
 @Component({
   selector: 'app-batch-test',
@@ -6,15 +7,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./batch-test.component.scss']
 })
 export class BatchTestComponent implements OnInit {
-  responseMsg:string;
+  responseMsg:any;
 
-  constructor() { }
+  constructor(public batchService: BatchService) { }
 
   ngOnInit() {
   }
 
   public onTestBatch():void{
-    console.log("onTestBatch");
-    this.responseMsg="TEST BATCH";
+    this.batchService.doTestBatch().subscribe(
+      data => {
+        console.log(data);
+        this.responseMsg=data["_body"];
+      },
+      error => {
+        console.error(error);
+        this.responseMsg=error;
+      }
+    );
+    console.log("onTestBatch")
   }
 }
