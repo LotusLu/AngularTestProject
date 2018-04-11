@@ -11,26 +11,14 @@ export const routes: Routes = [
     loadChildren: 'app/pages/login/login.module#LoginModule'
   },
   {
-    path: 'register',
-    loadChildren: 'app/pages/register/register.module#RegisterModule'
-  },
-  {
     path: 'pages',
     component: Pages,
     children: [
       { path: '', redirectTo: 'workingSpace', pathMatch: 'full' },
       { path: 'workingSpace', loadChildren: './working-space/working-space.module#WorkingSpaceModule' },
-      { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
-      { path: 'editors', loadChildren: './editors/editors.module#EditorsModule' },
-      { path: 'components', loadChildren: './components/components.module#ComponentsModule' },
-      { path: 'charts', loadChildren: './charts/charts.module#ChartsModule' },
-      { path: 'ui', loadChildren: './ui/ui.module#UiModule' },
-      { path: 'forms', loadChildren: './forms/forms.module#FormsModule' },
-      { path: 'tables', loadChildren: './tables/tables.module#TablesModule' },
-      { path: 'maps', loadChildren: './maps/maps.module#MapsModule' },
       { path: 'paymentEnquery', loadChildren: './payment-enquery/payment-enquery.module#PaymentEnqueryModule' },
-      { path: 'payment', loadChildren: './payment/payment.module#PaymentModule' }
-
+      { path: 'payment', loadChildren: './payment/payment.module#PaymentModule' },
+      { path: 'batch', loadChildren: './batch-test/batch-test.module#BatchModule' }
     ]
 
   }

@@ -15,7 +15,8 @@
       "workingSpace": "Index",
       "payment": "Payment Upload",
       "paymentEnquery": "Payment Query",
-      "logout": "Log out"
+      "logout": "Log out",
+      "batch": "Batch Test"
     },
     "created_with": "Created with"
   },

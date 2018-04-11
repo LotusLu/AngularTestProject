@@ -37,6 +37,18 @@ export const PAGES_MENU = [
             order: 0
           }
         }
+      },
+      {
+        path: 'batch',
+        data: {
+          menu: {
+            title: 'general.menu.batch',
+            icon: 'ion-android-laptop',
+            selected: false,
+            expanded: false,
+            order: 0
+          }
+        }
       }
     ]
   },
