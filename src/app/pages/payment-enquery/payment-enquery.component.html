@@ -1,8 +1,6 @@
 <form [formGroup]="form" (ngSubmit)="onQuery()" class="form-horizontal">
-    <div class="form-group row" [ngClass]="{'has-error': (!userId.valid && userId.touched), 'has-success': (userId.valid && userId.touched)}">
-      <div class="col-sm-10">
-        <input [formControl]="userId" type="text" class="form-control with-danger-addon" id="inputUserId3" placeholder="Search for..." >
-      </div>
+    <div class="input-group" [ngClass]="{'has-error': (!userId.valid && userId.touched), 'has-success': (userId.valid && userId.touched)}">
+      <input [formControl]="userId" type="text" class="form-control with-danger-addon" id="inputUserId3" placeholder="Search for..." >
       <div class="input-group-btn">
           <button [disabled]="!form.valid" type="submit" class="btn btn-danger" translate>Go!</button>
       </div>

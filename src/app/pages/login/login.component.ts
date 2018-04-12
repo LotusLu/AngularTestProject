@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { LoginService } from './login.service';
 import { LoginData } from './login-model/login-model';
 import { TOKEN } from '../../app.module';
+// import { AlertService } from '../../service/alert.service';
 
 @Component({
   selector: 'login',
@@ -22,6 +23,7 @@ export class Login {
               public router: Router,
               public activatedRoute: ActivatedRoute,
               public loginService: LoginService,
+              // public alertService: AlertService
              ) {
     this.form = fb.group({
       'userId': ['', Validators.compose([Validators.required, Validators.minLength(4)])],
@@ -43,15 +45,20 @@ export class Login {
   }
 
   public onLogin(values:Object):void {
-    this.submitted = true;
-    if (this.form.valid&&this.checkLogin()) {
-      this.filledLoginData();
-      console.log(this.loginData);
-      this.loginService.login(this.loginData);
-      //導至首頁
-      this.router.navigateByUrl("page/workingSpace");
-    }else{
-      alert('Username or password is incorrect');
+      this.submitted = true;
+      if (this.form.valid) {
+        this.filledLoginData();
+        console.log(this.loginData);
+        this.loginService.login(this.loginData).subscribe(
+          data => {
+              console.log("login success>"+data);
+              //導至首頁
+              this.router.navigateByUrl("page/workingSpace");
+          },
+          error => {
+              // this.alertService.error(error.error);
+          }
+      );
     }
   }
 
@@ -60,17 +67,5 @@ export class Login {
     this.loginData.password=this.password.value;
     this.loginData.channel=this.channel.value;
   }
-
-  /**
-  * 檢查可否登入
-  */
-  private checkLogin():boolean{
-    console.log("checkLogin!!");
-    if('admin'===this.userId.value && 'admin'===this.password.value){
-      return true;
-    }   
-    return false;
-  }
-
 
 }

@@ -31,6 +31,7 @@ export class PaymentEnqueryComponent implements OnInit {
   }
 
   public onQuery():void{
+    console.log("onQuery");
     this.paymentEnqueryService.queryPaymentList(this.userId.value,sessionStorage.getItem(CHANNEL)).map(res=>{
       console.log(res);
       let result=res.json();
