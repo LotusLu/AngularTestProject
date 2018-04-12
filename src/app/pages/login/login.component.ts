@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { LoginService } from './login.service';
 import { LoginData } from './login-model/login-model';
 import { TOKEN } from '../../app.module';
+import { AlertService } from '../../service/alert.service';
 // import { AlertService } from '../../service/alert.service';
 
 @Component({
@@ -23,7 +24,7 @@ export class Login {
               public router: Router,
               public activatedRoute: ActivatedRoute,
               public loginService: LoginService,
-              // public alertService: AlertService
+              public alertService: AlertService
              ) {
     this.form = fb.group({
       'userId': ['', Validators.compose([Validators.required, Validators.minLength(4)])],
@@ -56,7 +57,7 @@ export class Login {
               this.router.navigateByUrl("page/workingSpace");
           },
           error => {
-              // this.alertService.error(error.error);
+              this.alertService.error(error.error);
           }
       );
     }

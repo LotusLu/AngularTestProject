@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 
 import { StartupService } from '../../service/startup.service';
+import { AlertService } from '../../service/alert.service';
 
 @Component({
   selector: 'app-payment',
@@ -14,7 +15,8 @@ export class PaymentComponent implements OnInit {
 
 
   constructor(public http:Http,
-              private startupService: StartupService
+              private startupService: StartupService,
+              private alertService: AlertService
   ) { }
 
   ngOnInit() {
@@ -32,9 +34,15 @@ export class PaymentComponent implements OnInit {
   public onUpload(){
     const formData=new FormData();
     formData.append(this.selectedFile.type,this.selectedFile,this.selectedFile.name);
-    this.http.post("http://172.20.10.2:6271/",formData).subscribe(res=>{
-      console.log(res);
-    });
+    this.http.post("http://172.20.10.2:6271/",formData).subscribe( 
+      data => {
+          console.log(data);
+          this.alertService.success("Upload Finish!");
+      },
+      error => {
+        this.alertService.error(error.error);
+      }
+    );
     
   }
 }

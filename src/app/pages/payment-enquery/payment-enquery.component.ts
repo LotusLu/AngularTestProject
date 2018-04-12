@@ -4,6 +4,7 @@ import { PaymentEnqueryService } from './payment-enquery.service';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { StartupService } from '../../service/startup.service';
 import { CHANNEL } from '../../app.module';
+import { AlertService } from '../../service/alert.service';
 
 @Component({
   selector: 'app-payment-enquery',
@@ -18,7 +19,8 @@ export class PaymentEnqueryComponent implements OnInit {
 
   constructor(fb:FormBuilder,
               public paymentEnqueryService: PaymentEnqueryService,
-              private startupService: StartupService
+              private startupService: StartupService,
+              private alertService: AlertService
              ) {
     this.form = fb.group({
       'userId': ['', Validators.compose([Validators.required, Validators.minLength(4)])],
@@ -40,9 +42,11 @@ export class PaymentEnqueryComponent implements OnInit {
     }).subscribe(
 			res=>{
         console.log(res);
-				this.paymentEnqueryDatas = res;
+        this.paymentEnqueryDatas = res;
+        this.alertService.success("Query Finish!");
 			},
 			error => {
+        this.alertService.error(error.error);
         console.log(error)},
 			() => {}
 		);

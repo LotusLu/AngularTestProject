@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgaModule } from '../../theme/nga.module';
 import { PaymentComponent } from './payment.component';
 import { routing } from './payment.routing';
+import { AlertModule } from '../../_directives/alert.module';
 
 
 
@@ -16,6 +17,7 @@ import { routing } from './payment.routing';
     ReactiveFormsModule,
     FormsModule,
     NgaModule,
+    AlertModule,
     routing
   ],
   declarations: [

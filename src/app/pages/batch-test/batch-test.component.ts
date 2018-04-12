@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BatchService } from './batch-test.service';
 import { StartupService } from '../../service/startup.service';
-// import { AlertService } from '../../service/alert.service';
+import { AlertService } from '../../service/alert.service';
 
 @Component({
   selector: 'app-batch-test',
@@ -12,7 +12,7 @@ export class BatchTestComponent implements OnInit {
 
   constructor(public batchService: BatchService,
               private startupService: StartupService,
-              // private alertService:AlertService
+              private alertService:AlertService
   ) { }
 
   ngOnInit() {
@@ -23,11 +23,11 @@ export class BatchTestComponent implements OnInit {
     this.batchService.doTestBatch().subscribe(
       data => {
         console.log(data);
-        // this.alertService.success(data["_body"]);
+        this.alertService.success(data["_body"]);
       },
       error => {
         console.error(error);
-        // this.alertService.success(error.error);
+        this.alertService.success(error.error);
       }
     );
   }

@@ -17,6 +17,7 @@ import { GlobalState } from './global.state';
 import { NgaModule } from './theme/nga.module';
 import { PagesModule } from './pages/pages.module';
 import { StartupService } from './service/startup.service';
+import { AlertService } from './service/alert.service';
 
 
 // Application wide providers
@@ -55,7 +56,7 @@ export type StoreType = {
     routing
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
-    APP_PROVIDERS, StartupService
+    APP_PROVIDERS, StartupService,AlertService
   ]
 })
 

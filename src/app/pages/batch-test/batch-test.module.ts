@@ -6,10 +6,7 @@ import { NgaModule } from '../../theme/nga.module';
 import { BatchTestComponent } from './batch-test.component';
 import { routing } from '../batch-test/batch-test.routing';
 import { BatchService } from './batch-test.service';
-import { AlertComponent } from '../alert/alert.component';
-
-
-
+import { AlertModule } from '../../_directives/alert.module';
 
 @NgModule({
   imports: [
@@ -18,6 +15,7 @@ import { AlertComponent } from '../alert/alert.component';
     ReactiveFormsModule,
     FormsModule,
     NgaModule,
+    AlertModule,
     routing
   ],
   declarations: [
