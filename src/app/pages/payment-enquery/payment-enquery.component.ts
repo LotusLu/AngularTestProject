@@ -46,7 +46,7 @@ export class PaymentEnqueryComponent implements OnInit {
         this.alertService.success("Query Finish!");
 			},
 			error => {
-        this.alertService.error(error.error);
+        this.alertService.error(error);
         console.log(error)},
 			() => {}
 		);

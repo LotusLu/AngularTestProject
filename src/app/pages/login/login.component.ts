@@ -57,7 +57,7 @@ export class Login {
               this.router.navigateByUrl("page/workingSpace");
           },
           error => {
-              this.alertService.error(error.error);
+              this.alertService.error(error);
           }
       );
     }

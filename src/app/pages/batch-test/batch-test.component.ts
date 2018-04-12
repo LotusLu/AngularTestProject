@@ -26,8 +26,7 @@ export class BatchTestComponent implements OnInit {
         this.alertService.success(data["_body"]);
       },
       error => {
-        console.error(error);
-        this.alertService.success(error.error);
+        this.alertService.error(error);
       }
     );
   }

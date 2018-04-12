@@ -6,14 +6,16 @@ import { Http, Headers, Response } from '@angular/http';
 import { LoginData } from '../login/login-model/login-model';
 import { TOKEN, CHANNEL, LOGIN_USER } from '../../app.module';
 import { Router } from '@angular/router';
+import { Handle } from '../../handle/Handle.service';
 
 @Injectable()
 export class LoginService {
-  public userLoginURL = '/meta/user-login-mock.json';
+  public userLoginURL = 'https://reqres.in/api/login/';
   public subject: Subject<LoginData> = new Subject<LoginData>();
   
   constructor(public http:Http,
-              public router:Router            
+              public router:Router,
+              public handle:Handle            
   ){}
 
   public get currentUser():Observable<LoginData>{
@@ -24,33 +26,19 @@ export class LoginService {
     sessionStorage.setItem(LOGIN_USER,user.userId);
     sessionStorage.setItem(CHANNEL,user.channel);
     return this.http
-            .get(this.userLoginURL)
+            .post(this.userLoginURL,{email:user.userId,password:user.password})
             .map((response: Response) => {
-              if(!this.checkLogin(user)){
-                throw Observable.throw("Username or password is incorrect");
-              }
-              let jsonUser = response.json();
-              if(jsonUser && jsonUser.token){
-                sessionStorage.setItem(TOKEN,JSON.stringify(jsonUser));
-                this.subject.next(Object.assign({},jsonUser));
-              }
-              return response;
-            });
+              let token = response.json();
+              console.log(token);
+              sessionStorage.setItem(TOKEN,JSON.stringify(token));
+              return token;
+            }).catch(error=>this.handle.handleError(error));
   }
-
+  
   public logout():void{
     sessionStorage.removeItem(LOGIN_USER);
     sessionStorage.removeItem(TOKEN);
     this.subject.next(Object.assign({}));
   }
 
-  /**
-  * 檢查可否登入
-  */
- private checkLogin(user:LoginData):boolean{
-  if('admin'===user.userId && 'admin'===user.password){
-    return true;
-  }   
-  return false;
-}
 }

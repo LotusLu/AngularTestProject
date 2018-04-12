@@ -3,6 +3,7 @@ import { Http } from '@angular/http';
 
 import { StartupService } from '../../service/startup.service';
 import { AlertService } from '../../service/alert.service';
+import { Handle } from '../../handle/Handle.service';
 
 @Component({
   selector: 'app-payment',
@@ -16,7 +17,8 @@ export class PaymentComponent implements OnInit {
 
   constructor(public http:Http,
               private startupService: StartupService,
-              private alertService: AlertService
+              private alertService: AlertService,
+              private handle:Handle
   ) { }
 
   ngOnInit() {
@@ -34,13 +36,15 @@ export class PaymentComponent implements OnInit {
   public onUpload(){
     const formData=new FormData();
     formData.append(this.selectedFile.type,this.selectedFile,this.selectedFile.name);
-    this.http.post("http://172.20.10.2:6271/",formData).subscribe( 
+    this.http.post("http://172.20.10.2:6271/",formData)
+    .catch(error=>this.handle.handleError(error))
+    .subscribe( 
       data => {
           console.log(data);
           this.alertService.success("Upload Finish!");
       },
       error => {
-        this.alertService.error(error.error);
+        this.alertService.error(error);
       }
     );
     
