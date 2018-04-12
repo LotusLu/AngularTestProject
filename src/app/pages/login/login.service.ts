@@ -19,6 +19,7 @@ export class LoginService {
 
   public login(user:LoginData){
     sessionStorage.setItem(LOGIN_USER,user.userId);
+    console.log(user.channel);
     sessionStorage.setItem(CHANNEL,user.channel);
     return this.http
             .get(this.userLoginURL)

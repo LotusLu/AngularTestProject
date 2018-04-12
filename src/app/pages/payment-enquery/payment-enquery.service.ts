@@ -5,15 +5,15 @@ import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class PaymentEnqueryService {
-    public paymentEnqueryURL = "/meta/payment-enquery-mock.json";
+    public paymentEnqueryURL = "http://192.168.8.102:2222/queryUserItem";
 
     constructor(public http:Http) {
     }
 
-    public queryPaymentList(searchUserId:string,channel:string){   
+    public queryPaymentList(searchUserId:string,channel:string){ 
         let params = new URLSearchParams();
-        params.set('searchUserId',searchUserId);
-        params.set('channel',channel);
+        params.append('searchUserId',searchUserId);
+        params.append('channel',channel);
         return this.http.get(this.paymentEnqueryURL,{search:params});
     }
 

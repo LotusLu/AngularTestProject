@@ -31,15 +31,18 @@ export class PaymentEnqueryComponent implements OnInit {
   }
 
   public onQuery():void{
-    this.paymentEnqueryService.queryPaymentList(this.userId.value,localStorage.getItem(CHANNEL)).map(res=>{
+    this.paymentEnqueryService.queryPaymentList(this.userId.value,sessionStorage.getItem(CHANNEL)).map(res=>{
+      console.log(res);
       let result=res.json();
       console.log(result);
       return result;
     }).subscribe(
 			res=>{
-				this.paymentEnqueryDatas = res["items"];
+        console.log(res);
+				this.paymentEnqueryDatas = res;
 			},
-			error => {console.log(error)},
+			error => {
+        console.log(error)},
 			() => {}
 		);
   }
