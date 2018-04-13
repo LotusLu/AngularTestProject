@@ -4,9 +4,9 @@ import 'rxjs/add/operator/map';
 import { Subject } from 'rxjs/Subject';
 import { Http, Headers, Response } from '@angular/http';
 import { LoginData } from '../login/login-model/login-model';
-import { TOKEN, CHANNEL, LOGIN_USER } from '../../app.module';
 import { Router } from '@angular/router';
 import { Handle } from '../../handle/Handle.service';
+import { TOKEN,LOGIN_USER,CHANNEL } from '../../service/const';
 
 @Injectable()
 export class LoginService {
@@ -36,9 +36,7 @@ export class LoginService {
   }
   
   public logout():void{
-    sessionStorage.removeItem(LOGIN_USER);
-    sessionStorage.removeItem(TOKEN);
-    this.subject.next(Object.assign({}));
+    sessionStorage.clear;
   }
 
 }

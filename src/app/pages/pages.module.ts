@@ -6,6 +6,7 @@ import { NgaModule } from '../theme/nga.module';
 import { AppTranslationModule } from '../app.translation.module';
 
 import { Pages } from './pages.component';
+import { AppModule } from '../app.module';
 
 @NgModule({
   imports: [CommonModule, AppTranslationModule, NgaModule, routing],

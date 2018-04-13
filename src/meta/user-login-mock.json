@@ -1,7 +1,16 @@
 {
-
+"userItems":[
+    {
    "id": 1,
-   "userName": "admin",
-   "token": "fake-jwt-token"
-
+   "userId": "admin",
+   "password": "admin",
+   "userType": "admin"
+    },
+    {
+   "id": 2,
+   "userId": "user",
+   "password": "user",
+   "userType": "user"
+    }
+]
 }

@@ -65,3 +65,47 @@ export const PAGES_MENU = [
     }
   }
 ];
+
+export const USER_PAGES_MENU = [
+  {
+    path: 'pages',
+    children: [
+      {
+        path: 'workingSpace',
+        data: {
+          menu: {
+            title: 'general.menu.workingSpace',
+            icon: 'ion-android-home',
+            selected: false,
+            expanded: false,
+            order: 0
+          }
+        }
+      },
+      {
+        path: 'paymentEnquery',
+        data: {
+          menu: {
+            title: 'general.menu.paymentEnquery',
+            icon: 'ion-android-laptop',
+            selected: false,
+            expanded: false,
+            order: 0
+          }
+        }
+      }
+    ]
+  },
+  {
+    path: 'login',
+    data: {
+      menu: {
+        title: 'general.menu.logout',
+        icon: 'ion-android-exit',
+        selected: false,
+        expanded: false,
+        order: 750
+      }
+    }
+  }
+];

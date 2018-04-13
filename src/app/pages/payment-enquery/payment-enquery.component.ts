@@ -3,8 +3,8 @@ import { PaymentEnqueryData } from './payment-enquery-data/payment-enquery-data.
 import { PaymentEnqueryService } from './payment-enquery.service';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { StartupService } from '../../service/startup.service';
-import { CHANNEL } from '../../app.module';
 import { AlertService } from '../../service/alert.service';
+import { CHANNEL } from '../../service/const';
 
 @Component({
   selector: 'app-payment-enquery',

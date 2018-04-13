@@ -9,7 +9,7 @@ import { StartupService } from '../../service/startup.service';
 })
 export class WorkingSpaceComponent implements OnInit {
 
-  icons:any;
+  functions:any;
 
   constructor(private _iconsService: IconsService,
               private startupService: StartupService
@@ -18,6 +18,6 @@ export class WorkingSpaceComponent implements OnInit {
 
   ngOnInit() {
     this.startupService.checkToken();
-    this.icons = this._iconsService.getAll();
+    this.functions = this._iconsService.getFunctionList();
   }
 }

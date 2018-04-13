@@ -7,7 +7,7 @@ import { NgaModule } from '../../theme/nga.module';
 import { Login } from './login.component';
 import { routing }       from './login.routing';
 import { LoginService } from './login.service';
-import { AlertModule } from '../../_directives/alert.module';
+import { AlertModule } from '../../directives/alert.module';
 
 @NgModule({
   imports: [

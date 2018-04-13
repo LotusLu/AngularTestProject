@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { Routes } from '@angular/router';
 
 import { BaMenuService } from '../theme';
-import { PAGES_MENU } from './pages.menu';
+import { PAGES_MENU, USER_PAGES_MENU } from './pages.menu';
+import { ADMIN_ROLE_CODE, USER_TYPE } from '../service/const';
 
 @Component({
   selector: 'pages',
@@ -21,10 +22,16 @@ import { PAGES_MENU } from './pages.menu';
 })
 export class Pages {
 
-  constructor(private _menuService: BaMenuService,) {
+  constructor(private _menuService: BaMenuService, ) {
   }
 
   ngOnInit() {
-    this._menuService.updateMenuByRoutes(<Routes>PAGES_MENU);
+    let CURRENT_PAGES_MENU;
+    if (ADMIN_ROLE_CODE === sessionStorage.getItem(USER_TYPE)){
+        CURRENT_PAGES_MENU=PAGES_MENU;
+    }else{
+        CURRENT_PAGES_MENU=USER_PAGES_MENU;
+    }
+    this._menuService.updateMenuByRoutes(CURRENT_PAGES_MENU);
   }
 }

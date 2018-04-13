@@ -6,7 +6,7 @@ import { NgaModule } from '../../theme/nga.module';
 import { BatchTestComponent } from './batch-test.component';
 import { routing } from '../batch-test/batch-test.routing';
 import { BatchService } from './batch-test.service';
-import { AlertModule } from '../../_directives/alert.module';
+import { AlertModule } from '../../directives/alert.module';
 
 @NgModule({
   imports: [

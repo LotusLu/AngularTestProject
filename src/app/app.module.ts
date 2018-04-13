@@ -27,10 +27,6 @@ const APP_PROVIDERS = [
   GlobalState
 ];
 
-export const TOKEN = 'access_token';
-export const CHANNEL = 'channel';
-export const LOGIN_USER = 'loginUser';
-
 export type StoreType = {
   state: InternalStateType,
   restoreInputValues: () => void,

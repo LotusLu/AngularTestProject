@@ -7,7 +7,7 @@ import { PaymentEnqueryComponent } from './payment-enquery.component';
 import { routing } from './payment-enquery.routing';
 import { NgxBarcodeModule } from 'ngx-barcode';
 import { PaymentEnqueryService } from './payment-enquery.service';
-import { AlertModule } from '../../_directives/alert.module';
+import { AlertModule } from '../../directives/alert.module';
 
 @NgModule({
   imports: [
