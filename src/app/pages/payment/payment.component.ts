@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers, Request, RequestOptions, Response, RequestMethod, URLSearchParams } from '@angular/http';
 
 import { StartupService } from '../../service/startup.service';
 import { AlertService } from '../../service/alert.service';
 import { Handle } from '../../handle/Handle.service';
+import { TOKEN } from '../../service/const';
 
 @Component({
   selector: 'app-payment',
@@ -11,6 +12,7 @@ import { Handle } from '../../handle/Handle.service';
   styleUrls: ['./payment.component.scss']
 })
 export class PaymentComponent implements OnInit {
+  public paymentUploadURL = "http://192.168.8.102:2222/sendFile";
   selectFileName:string;
   selectedFile:File;
 
@@ -34,9 +36,12 @@ export class PaymentComponent implements OnInit {
   }
 
   public onUpload(){
+    let headers = new Headers();
+    headers.append(TOKEN, sessionStorage.getItem(TOKEN));
+    let options = new RequestOptions({ headers: headers });
     const formData=new FormData();
-    formData.append(this.selectedFile.type,this.selectedFile,this.selectedFile.name);
-    this.http.post("http://172.20.10.2:6271/",formData)
+    formData.append("file",this.selectedFile,this.selectedFile.name);
+    this.http.post(this.paymentUploadURL,formData,options)
     .catch(error=>this.handle.handleError(error))
     .subscribe( 
       data => {

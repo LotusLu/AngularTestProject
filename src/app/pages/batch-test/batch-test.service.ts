@@ -3,6 +3,7 @@ import { Http, Headers, Request, RequestOptions, Response, RequestMethod, URLSea
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { Handle } from '../../handle/Handle.service';
+import { TOKEN } from '../../service/const';
 
 @Injectable()
 export class BatchService {
@@ -15,8 +16,11 @@ export class BatchService {
 
     public doTestBatch(){
         console.log("user");
-        
-        return this.http.get(this.testBatchURL)
+        let headers = new Headers();
+        headers.append(TOKEN, sessionStorage.getItem(TOKEN));
+        let params = new URLSearchParams();
+        let options = new RequestOptions({ headers: headers, params: params });
+        return this.http.get(this.testBatchURL,options)
                         .catch(error=>this.handle.handleError(error));
     }
 
