@@ -5,6 +5,9 @@ import { Message } from './shared/model/message';
 import { User } from './shared/model/user';
 import { SocketService } from './shared/services/socket.service';
 import { Event_CONNECT, Event_DISCONNECT } from './shared/model/event';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { DefaultModal } from '../ui/components/modals/default-modal/default-modal.component';
+import { AbstractControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 
 @Component({
@@ -20,10 +23,11 @@ export class BroadcastComponent implements OnInit {
   messageContent: string;
   ioConnection: any;
 
-  constructor(private socketService: SocketService) { }
+  constructor(private socketService: SocketService,
+  ) {
+  }
 
   ngOnInit(): void {
-    console.log("initIoConnection!");
     this.initIoConnection();
   }
 

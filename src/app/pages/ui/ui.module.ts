@@ -10,6 +10,7 @@ import { Ui } from './ui.component';
 import { Icons } from './components/icons/icons.component';
 
 import { IconsService } from './components/icons/icons.service';
+import { DefaultModal } from './components/modals/default-modal/default-modal.component';
 
 
 @NgModule({
@@ -25,8 +26,10 @@ import { IconsService } from './components/icons/icons.service';
   declarations: [
     Icons,
     Ui,
+    DefaultModal
   ],
   entryComponents: [
+    DefaultModal
   ],
   providers: [
     IconsService
