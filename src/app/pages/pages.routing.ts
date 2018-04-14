@@ -18,9 +18,8 @@ export const routes: Routes = [
       { path: 'workingSpace', loadChildren: './working-space/working-space.module#WorkingSpaceModule' },
       { path: 'paymentEnquery', loadChildren: './payment-enquery/payment-enquery.module#PaymentEnqueryModule' },
       { path: 'payment', loadChildren: './payment/payment.module#PaymentModule' },
-      { path: 'batch', loadChildren: './batch-test/batch-test.module#BatchModule' },
-      { path: 'broadcast', loadChildren: './broadcast/broadcast.module#BroadcastModule' }
-
+      { path: 'broadcast', loadChildren: './broadcast/broadcast.module#BroadcastModule' },
+      { path: 'batch', loadChildren: './batch-test/batch-test.module#BatchModule' }
     ]
 
   }

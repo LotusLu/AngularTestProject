@@ -49,18 +49,6 @@ export const PAGES_MENU = [
             order: 0
           }
         }
-      },
-      {
-        path: 'broadcast',
-        data: {
-          menu: {
-            title: '推播測試',
-            icon: 'ion-grid',
-            selected: false,
-            expanded: false,
-            order: 0
-          }
-        }
       }
     ]
   },

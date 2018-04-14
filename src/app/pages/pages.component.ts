@@ -58,8 +58,8 @@ export class Pages {
     this.socketService.initSocket();
 
     this.ioConnection = this.socketService.onMessage()
-      .subscribe((message: Message) => {
-        this.staticModalShow(message.content);
+      .subscribe((message: string) => {
+        this.staticModalShow(message);
       });
 
     this.socketService.onEvent(Event_CONNECT)

@@ -5,7 +5,8 @@ import { Message } from '../model/message';
 
 import * as socketIo from 'socket.io-client';
 
-const SERVER_URL = 'http://localhost:8080';
+//const SERVER_URL = 'http://localhost:8080';
+const SERVER_URL = 'http://192.168.8.102:9092/';
 
 @Injectable()
 export class SocketService {
@@ -16,12 +17,14 @@ export class SocketService {
     }
 
     public send(message: Message): void {
-        this.socket.emit('message', message);
+        this.socket.emit('message', message.content);
     }
 
-    public onMessage(): Observable<Message> {
-        return new Observable<Message>(observer => {
-            this.socket.on('message', (data: Message) => observer.next(data));
+    public onMessage(): Observable<string> {
+        console.log("onMessage");
+        return new Observable<string>(observer => {
+            console.log("ObservableonMessage");
+            this.socket.on('message', (data: string) => observer.next(data));
         });
     }
 

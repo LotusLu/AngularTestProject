@@ -36,8 +36,9 @@ export class BroadcastComponent implements OnInit {
     this.socketService.initSocket();
 
     this.ioConnection = this.socketService.onMessage()
-      .subscribe((message: Message) => {
-        this.messages.push(message);
+      .subscribe((message: string) => {
+        console.log(message);
+        //this.messages.push(message);
       });
 
     this.socketService.onEvent(Event_CONNECT)
