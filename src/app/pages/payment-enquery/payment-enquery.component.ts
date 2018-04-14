@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { PaymentEnqueryData } from './payment-enquery-data/payment-enquery-data.module';
 import { PaymentEnqueryService } from './payment-enquery.service';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
-import { StartupService } from '../../service/startup.service';
-import { AlertService } from '../../service/alert.service';
-import { CHANNEL } from '../../service/const';
+import { StartupService } from '../../share/service/startup.service';
+import { AlertService } from '../../share/service/alert.service';
+import { CHANNEL } from '../../share/constant/const';
+
 
 @Component({
   selector: 'app-payment-enquery',
@@ -13,15 +14,15 @@ import { CHANNEL } from '../../service/const';
 })
 export class PaymentEnqueryComponent implements OnInit {
   paymentEnqueryDatas: PaymentEnqueryData[] = [];
-  
-  public form:FormGroup;
-  public userId:AbstractControl;
 
-  constructor(fb:FormBuilder,
-              public paymentEnqueryService: PaymentEnqueryService,
-              private startupService: StartupService,
-              private alertService: AlertService
-             ) {
+  public form: FormGroup;
+  public userId: AbstractControl;
+
+  constructor(fb: FormBuilder,
+    public paymentEnqueryService: PaymentEnqueryService,
+    private startupService: StartupService,
+    private alertService: AlertService
+  ) {
     this.form = fb.group({
       'userId': ['', Validators.compose([Validators.required, Validators.minLength(4)])],
     });
@@ -32,24 +33,25 @@ export class PaymentEnqueryComponent implements OnInit {
     this.startupService.checkToken();
   }
 
-  public onQuery():void{
+  public onQuery(): void {
     console.log("onQuery");
-    this.paymentEnqueryService.queryPaymentList(this.userId.value,sessionStorage.getItem(CHANNEL)).map(res=>{
+    this.paymentEnqueryService.queryPaymentList(this.userId.value, sessionStorage.getItem(CHANNEL)).map(res => {
       console.log(res);
-      let result=res.json();
+      let result = res.json();
       console.log(result);
       return result;
     }).subscribe(
-			res=>{
+      res => {
         console.log(res);
         this.paymentEnqueryDatas = res;
         this.alertService.success("Query Finish!");
-			},
-			error => {
+      },
+      error => {
         this.alertService.error(error);
-        console.log(error)},
-			() => {}
-		);
+        console.log(error)
+      },
+      () => { }
+    );
   }
 
 }

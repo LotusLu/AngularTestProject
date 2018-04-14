@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BatchService } from './batch-test.service';
-import { StartupService } from '../../service/startup.service';
-import { AlertService } from '../../service/alert.service';
+import { StartupService } from '../../share/service/startup.service';
+import { AlertService } from '../../share/service/alert.service';
+
 
 @Component({
   selector: 'app-batch-test',
@@ -11,15 +12,15 @@ import { AlertService } from '../../service/alert.service';
 export class BatchTestComponent implements OnInit {
 
   constructor(public batchService: BatchService,
-              private startupService: StartupService,
-              private alertService:AlertService
+    private startupService: StartupService,
+    private alertService: AlertService
   ) { }
 
   ngOnInit() {
     this.startupService.checkToken();
   }
 
-  public onTestBatch():void{
+  public onTestBatch(): void {
     this.batchService.doTestBatch().subscribe(
       data => {
         console.log(data);

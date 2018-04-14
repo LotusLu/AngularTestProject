@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IconsService } from '../ui/components/icons/icons.service';
-import { StartupService } from '../../service/startup.service';
+import { StartupService } from '../../share/service/startup.service';
 
 @Component({
   selector: 'app-working-space',
@@ -9,11 +9,11 @@ import { StartupService } from '../../service/startup.service';
 })
 export class WorkingSpaceComponent implements OnInit {
 
-  functions:any;
+  functions: any;
 
   constructor(private _iconsService: IconsService,
-              private startupService: StartupService
-             ) {
+    private startupService: StartupService
+  ) {
   }
 
   ngOnInit() {

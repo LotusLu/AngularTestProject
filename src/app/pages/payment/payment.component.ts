@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Http, Headers, Request, RequestOptions, Response, RequestMethod, URLSearchParams } from '@angular/http';
+import { StartupService } from '../../share/service/startup.service';
+import { AlertService } from '../../share/service/alert.service';
+import { Handle } from '../../share/handle/Handle.service';
+import { TOKEN } from '../../share/constant/const';
 
-import { StartupService } from '../../service/startup.service';
-import { AlertService } from '../../service/alert.service';
-import { Handle } from '../../handle/Handle.service';
-import { TOKEN } from '../../service/const';
+
 
 @Component({
   selector: 'app-payment',

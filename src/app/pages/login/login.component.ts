@@ -3,10 +3,10 @@ import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/fo
 import { Router, ActivatedRoute } from '@angular/router';
 import { LoginService } from './login.service';
 import { LoginData } from './login-model/login-model';
-import { AlertService } from '../../service/alert.service';
 import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
-import { USER_TYPE } from '../../service/const';
+import { AlertService } from '../../share/service/alert.service';
+import { USER_TYPE } from '../../share/constant/const';
 
 @Component({
   selector: 'login',
@@ -58,8 +58,8 @@ export class Login {
           console.log("login success>" + data);
           this.getCurrenctUserInStorage().subscribe(
             data => {
-             //導至首頁
-            this.router.navigateByUrl("page/workingSpace");
+              //導至首頁
+              this.router.navigateByUrl("page/workingSpace");
             },
             error => {
               this.alertService.error(error);
@@ -89,9 +89,9 @@ export class Login {
         let userJson = response.json();
         let users = userJson['userItems'] || [];
         let filterUser = users.filter(user => user.userId === this.loginData.userId);
-        if(filterUser.length){
+        if (filterUser.length) {
           sessionStorage.setItem(USER_TYPE, filterUser[0].userType);
-        }else{
+        } else {
           sessionStorage.setItem(USER_TYPE, "user");
         }
         return filterUser;

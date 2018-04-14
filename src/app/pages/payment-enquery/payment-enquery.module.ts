@@ -1,5 +1,5 @@
-import { NgModule }      from '@angular/core';
-import { CommonModule }  from '@angular/common';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { AppTranslationModule } from '../../app.translation.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgaModule } from '../../theme/nga.module';
@@ -7,7 +7,7 @@ import { PaymentEnqueryComponent } from './payment-enquery.component';
 import { routing } from './payment-enquery.routing';
 import { NgxBarcodeModule } from 'ngx-barcode';
 import { PaymentEnqueryService } from './payment-enquery.service';
-import { AlertModule } from '../../directives/alert.module';
+import { AlertModule } from '../../share/directives/alert.module';
 
 @NgModule({
   imports: [
@@ -27,4 +27,4 @@ import { AlertModule } from '../../directives/alert.module';
     PaymentEnqueryService
   ]
 })
-export class PaymentEnqueryModule {}
+export class PaymentEnqueryModule { }

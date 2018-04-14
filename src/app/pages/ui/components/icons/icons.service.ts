@@ -1,5 +1,5 @@
-import {Injectable} from '@angular/core';
-import { ADMIN_ROLE_CODE, USER_TYPE } from '../../../../service/const';
+import { Injectable } from '@angular/core';
+import { ADMIN_ROLE_CODE, USER_TYPE } from '../../../../share/constant/const';
 
 @Injectable()
 export class IconsService {
@@ -24,7 +24,7 @@ export class IconsService {
         name: '批次',
         path: '/pages/batch'
       }
-     
+
     ],
     userFunction: [
       {
@@ -33,14 +33,14 @@ export class IconsService {
         name: '查詢',
         path: '/pages/paymentEnquery'
       }
-     
-    ],
- };
 
-  getFunctionList():any {
-    if (ADMIN_ROLE_CODE === sessionStorage.getItem(USER_TYPE)){
+    ],
+  };
+
+  getFunctionList(): any {
+    if (ADMIN_ROLE_CODE === sessionStorage.getItem(USER_TYPE)) {
       return this.icons['adminFunction'];
-    }else{
+    } else {
       return this.icons['userFunction'];
     }
 

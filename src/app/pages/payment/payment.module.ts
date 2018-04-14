@@ -1,11 +1,11 @@
-import { NgModule }      from '@angular/core';
-import { CommonModule }  from '@angular/common';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { AppTranslationModule } from '../../app.translation.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgaModule } from '../../theme/nga.module';
 import { PaymentComponent } from './payment.component';
 import { routing } from './payment.routing';
-import { AlertModule } from '../../directives/alert.module';
+import { AlertModule } from '../../share/directives/alert.module';
 
 
 
@@ -24,4 +24,4 @@ import { AlertModule } from '../../directives/alert.module';
     PaymentComponent
   ]
 })
-export class PaymentModule {}
+export class PaymentModule { }

@@ -1,12 +1,12 @@
-import { NgModule }      from '@angular/core';
-import { CommonModule }  from '@angular/common';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { AppTranslationModule } from '../../app.translation.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgaModule } from '../../theme/nga.module';
 import { BatchTestComponent } from './batch-test.component';
 import { routing } from '../batch-test/batch-test.routing';
 import { BatchService } from './batch-test.service';
-import { AlertModule } from '../../directives/alert.module';
+import { AlertModule } from '../../share/directives/alert.module';
 
 @NgModule({
   imports: [
@@ -25,4 +25,4 @@ import { AlertModule } from '../../directives/alert.module';
     BatchService
   ]
 })
-export class BatchModule {}
+export class BatchModule { }
