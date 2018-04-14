@@ -6,7 +6,7 @@ export const PAGES_MENU = [
         path: 'workingSpace',
         data: {
           menu: {
-            title: 'general.menu.workingSpace',
+            title: '首頁',
             icon: 'ion-android-home',
             selected: false,
             expanded: false,
@@ -18,7 +18,7 @@ export const PAGES_MENU = [
         path: 'payment',
         data: {
           menu: {
-            title: 'general.menu.payment',
+            title: '企業上傳',
             icon: 'ion-document',
             selected: false,
             expanded: false,
@@ -30,7 +30,7 @@ export const PAGES_MENU = [
         path: 'paymentEnquery',
         data: {
           menu: {
-            title: 'general.menu.paymentEnquery',
+            title: '繳費單查詢',
             icon: 'ion-android-laptop',
             selected: false,
             expanded: false,
@@ -42,8 +42,8 @@ export const PAGES_MENU = [
         path: 'batch',
         data: {
           menu: {
-            title: 'general.menu.batch',
-            icon: 'ion-android-laptop',
+            title: '批次測試',
+            icon: 'ion-compose',
             selected: false,
             expanded: false,
             order: 0
@@ -54,8 +54,8 @@ export const PAGES_MENU = [
         path: 'broadcast',
         data: {
           menu: {
-            title: 'BROAD TEST',
-            icon: 'ion-android-laptop',
+            title: '推播測試',
+            icon: 'ion-grid',
             selected: false,
             expanded: false,
             order: 0
@@ -68,7 +68,7 @@ export const PAGES_MENU = [
     path: 'login',
     data: {
       menu: {
-        title: 'general.menu.logout',
+        title: '登出',
         icon: 'ion-android-exit',
         selected: false,
         expanded: false,
@@ -86,7 +86,7 @@ export const USER_PAGES_MENU = [
         path: 'workingSpace',
         data: {
           menu: {
-            title: 'general.menu.workingSpace',
+            title: '首頁',
             icon: 'ion-android-home',
             selected: false,
             expanded: false,
@@ -98,7 +98,7 @@ export const USER_PAGES_MENU = [
         path: 'paymentEnquery',
         data: {
           menu: {
-            title: 'general.menu.paymentEnquery',
+            title: '繳費單查詢',
             icon: 'ion-android-laptop',
             selected: false,
             expanded: false,
@@ -112,7 +112,7 @@ export const USER_PAGES_MENU = [
     path: 'login',
     data: {
       menu: {
-        title: 'general.menu.logout',
+        title: '登出',
         icon: 'ion-android-exit',
         selected: false,
         expanded: false,

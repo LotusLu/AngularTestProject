@@ -15,13 +15,13 @@ export class IconsService {
       {
         color: 'warning',
         img: 'Money-Increase',
-        name: '查詢',
+        name: '繳費單查詢',
         path: '/pages/paymentEnquery'
       },
       {
         color: 'warning',
         img: 'Bell',
-        name: '批次',
+        name: '批次測試',
         path: '/pages/batch'
       }
 
@@ -30,7 +30,7 @@ export class IconsService {
       {
         color: 'warning',
         img: 'Money-Increase',
-        name: '查詢',
+        name: '繳費單查詢',
         path: '/pages/paymentEnquery'
       }
 
