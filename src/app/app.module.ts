@@ -5,12 +5,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
-/*
- * Platform and Environment providers/directives/pipes
- */
 import { routing } from './app.routing';
-
-// App is our top level component
 import { App } from './app.component';
 import { AppState, InternalStateType } from './app.service';
 import { GlobalState } from './global.state';
@@ -19,6 +14,7 @@ import { PagesModule } from './pages/pages.module';
 import { StartupService } from './share/service/startup.service';
 import { AlertService } from './share/service/alert.service';
 import { Handle } from './share/handle/Handle.service';
+import { LoginService } from './share/service/login.service';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -52,7 +48,11 @@ export type StoreType = {
     routing,
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
-    APP_PROVIDERS, StartupService, AlertService, Handle
+    APP_PROVIDERS, 
+    StartupService, 
+    AlertService, 
+    Handle,
+    LoginService
   ]
 })
 

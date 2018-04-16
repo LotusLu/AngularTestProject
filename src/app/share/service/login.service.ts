@@ -3,10 +3,10 @@ import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import { Subject } from 'rxjs/Subject';
 import { Http, Headers, Response } from '@angular/http';
-import { LoginData } from '../login/login-model/login-model';
 import { Router } from '@angular/router';
 import { Handle } from '../../share/handle/Handle.service';
 import { Const } from '../../share/constant/const';
+import { LoginData } from '../../pages/login/login-model/login-model';
 
 @Injectable()
 export class LoginService {

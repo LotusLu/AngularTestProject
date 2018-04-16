@@ -6,7 +6,6 @@ import { NgaModule } from '../../theme/nga.module';
 
 import { Login } from './login.component';
 import { routing } from './login.routing';
-import { LoginService } from './login.service';
 import { AlertModule } from '../../share/directives/alert.module';
 
 @NgModule({
@@ -23,7 +22,6 @@ import { AlertModule } from '../../share/directives/alert.module';
     Login
   ],
   providers: [
-    LoginService
   ],
 
 })

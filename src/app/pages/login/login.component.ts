@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { LoginService } from './login.service';
 import { LoginData } from './login-model/login-model';
 import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { AlertService } from '../../share/service/alert.service';
 import { Const } from '../../share/constant/const';
+import { LoginService } from '../../share/service/login.service';
 
 @Component({
   selector: 'login',
