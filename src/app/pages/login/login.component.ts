@@ -6,7 +6,7 @@ import { LoginData } from './login-model/login-model';
 import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { AlertService } from '../../share/service/alert.service';
-import { USER_TYPE } from '../../share/constant/const';
+import { Const } from '../../share/constant/const';
 
 @Component({
   selector: 'login',
@@ -90,9 +90,9 @@ export class Login {
         let users = userJson['userItems'] || [];
         let filterUser = users.filter(user => user.userId === this.loginData.userId);
         if (filterUser.length) {
-          sessionStorage.setItem(USER_TYPE, filterUser[0].userType);
+          sessionStorage.setItem(Const.USER_TYPE, filterUser[0].userType);
         } else {
-          sessionStorage.setItem(USER_TYPE, "user");
+          sessionStorage.setItem(Const.USER_TYPE, "user");
         }
         return filterUser;
       });

@@ -6,8 +6,7 @@ import { Http, Headers, Response } from '@angular/http';
 import { LoginData } from '../login/login-model/login-model';
 import { Router } from '@angular/router';
 import { Handle } from '../../share/handle/Handle.service';
-import { LOGIN_USER, CHANNEL, TOKEN } from '../../share/constant/const';
-
+import { Const } from '../../share/constant/const';
 
 @Injectable()
 export class LoginService {
@@ -24,14 +23,14 @@ export class LoginService {
   }
 
   public login(user: LoginData): Observable<Response> {
-    sessionStorage.setItem(LOGIN_USER, user.userId);
-    sessionStorage.setItem(CHANNEL, user.channel);
+    sessionStorage.setItem(Const.LOGIN_USER, user.userId);
+    sessionStorage.setItem(Const.CHANNEL, user.channel);
     return this.http
       .post(this.userLoginURL, { email: user.userId, password: user.password })
       .map((response: Response) => {
         let token = response.json();
         console.log(token);
-        sessionStorage.setItem(TOKEN, JSON.stringify(token));
+        sessionStorage.setItem(Const.TOKEN, JSON.stringify(token));
         return token;
       }).catch(error => this.handle.handleError(error));
   }

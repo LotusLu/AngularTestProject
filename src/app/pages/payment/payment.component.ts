@@ -3,9 +3,7 @@ import { Http, Headers, Request, RequestOptions, Response, RequestMethod, URLSea
 import { StartupService } from '../../share/service/startup.service';
 import { AlertService } from '../../share/service/alert.service';
 import { Handle } from '../../share/handle/Handle.service';
-import { TOKEN, CHANNEL } from '../../share/constant/const';
-
-
+import { Const } from '../../share/constant/const';
 
 @Component({
   selector: 'app-payment',
@@ -38,11 +36,10 @@ export class PaymentComponent implements OnInit {
 
   public onUpload() {
     let headers = new Headers();
-    headers.append(TOKEN, sessionStorage.getItem(TOKEN));
+    headers.append(Const.TOKEN, sessionStorage.getItem(Const.TOKEN));
     let options = new RequestOptions({ headers: headers });
     const formData = new FormData();
     formData.append("file", this.selectedFile, this.selectedFile.name);
-    // formData.append("channel", sessionStorage.getItem(CHANNEL));
     this.http.post(this.paymentUploadURL, formData, options)
       .catch(error => this.handle.handleError(error))
       .subscribe(

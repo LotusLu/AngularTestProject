@@ -7,9 +7,6 @@ import { PaymentComponent } from './payment.component';
 import { routing } from './payment.routing';
 import { AlertModule } from '../../share/directives/alert.module';
 
-
-
-
 @NgModule({
   imports: [
     CommonModule,

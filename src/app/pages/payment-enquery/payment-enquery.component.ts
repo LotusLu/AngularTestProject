@@ -4,8 +4,7 @@ import { PaymentEnqueryService } from './payment-enquery.service';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { StartupService } from '../../share/service/startup.service';
 import { AlertService } from '../../share/service/alert.service';
-import { CHANNEL } from '../../share/constant/const';
-
+import { Const } from '../../share/constant/const';
 
 @Component({
   selector: 'app-payment-enquery',
@@ -34,8 +33,7 @@ export class PaymentEnqueryComponent implements OnInit {
   }
 
   public onQuery(): void {
-    console.log("onQuery");
-    this.paymentEnqueryService.queryPaymentList(this.userId.value, sessionStorage.getItem(CHANNEL)).map(res => {
+    this.paymentEnqueryService.queryPaymentList(this.userId.value, sessionStorage.getItem(Const.CHANNEL)).map(res => {
       console.log(res);
       let result = res.json();
       console.log(result);

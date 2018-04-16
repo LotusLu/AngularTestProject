@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ADMIN_ROLE_CODE, USER_TYPE } from '../../../../share/constant/const';
+import { Const } from '../../../../share/constant/const';
 
 @Injectable()
 export class IconsService {
@@ -38,7 +38,7 @@ export class IconsService {
   };
 
   getFunctionList(): any {
-    if (ADMIN_ROLE_CODE === sessionStorage.getItem(USER_TYPE)) {
+    if (Const.ADMIN_ROLE_CODE === sessionStorage.getItem(Const.USER_TYPE)) {
       return this.icons['adminFunction'];
     } else {
       return this.icons['userFunction'];

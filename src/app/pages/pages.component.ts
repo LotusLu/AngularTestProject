@@ -3,7 +3,6 @@ import { Routes } from '@angular/router';
 
 import { BaMenuService } from '../theme';
 import { PAGES_MENU, USER_PAGES_MENU } from './pages.menu';
-import { ADMIN_ROLE_CODE, USER_TYPE } from '../share/constant/const';
 import { SocketService } from './broadcast/shared/services/socket.service';
 import { Action } from './broadcast/shared/model/action';
 import { User } from './broadcast/shared/model/user';
@@ -11,6 +10,7 @@ import { Message } from './broadcast/shared/model/message';
 import { Event_CONNECT, Event_DISCONNECT } from './broadcast/shared/model/event';
 import { DefaultModal } from './ui/components/modals/default-modal/default-modal.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Const } from '../share/constant/const';
 
 @Component({
   selector: 'pages',
@@ -44,7 +44,7 @@ export class Pages {
 
   ngOnInit() {
     let CURRENT_PAGES_MENU;
-    if (ADMIN_ROLE_CODE === sessionStorage.getItem(USER_TYPE)) {
+    if (Const.ADMIN_ROLE_CODE === sessionStorage.getItem(Const.USER_TYPE)) {
       CURRENT_PAGES_MENU = PAGES_MENU;
     } else {
       CURRENT_PAGES_MENU = USER_PAGES_MENU;

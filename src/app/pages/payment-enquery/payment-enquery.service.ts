@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, Request, RequestOptions, Response, RequestMethod, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { Subject } from 'rxjs/Subject';
-import { TOKEN } from '../../share/constant/const';
 import { Handle } from '../../share/handle/Handle.service';
+import { Const } from '../../share/constant/const';
 
 
 @Injectable()
@@ -18,7 +18,7 @@ export class PaymentEnqueryService {
     public queryPaymentList(searchUserId: string, channel: string) {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        headers.append(TOKEN, sessionStorage.getItem(TOKEN));
+        headers.append(Const.TOKEN, sessionStorage.getItem(Const.TOKEN));
         let params = new URLSearchParams();
         params.append('searchUserId', searchUserId);
         params.append('channel', channel);
