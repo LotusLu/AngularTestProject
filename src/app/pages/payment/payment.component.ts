@@ -11,7 +11,7 @@ import { Const } from '../../share/constant/const';
   styleUrls: ['./payment.component.scss']
 })
 export class PaymentComponent implements OnInit {
-  public paymentUploadURL = "http://192.168.8.102:2222/sendFile";
+  public paymentUploadURL = Const.BACK_END_URL + "sendFile";
   selectFileName: string;
   selectedFile: File;
 

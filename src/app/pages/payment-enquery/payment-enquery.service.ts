@@ -8,7 +8,7 @@ import { Const } from '../../share/constant/const';
 
 @Injectable()
 export class PaymentEnqueryService {
-    public paymentEnqueryURL = "http://192.168.8.102:2222/queryUserItem";
+    public paymentEnqueryURL = Const.BACK_END_URL + "queryUserItem";
 
     constructor(public http: Http,
         public handle: Handle

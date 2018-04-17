@@ -54,7 +54,6 @@ export class Pages {
   }
 
   private initIoConnection(): void {
-    console.log("initIoConnection!");
     this.socketService.initSocket();
 
     this.ioConnection = this.socketService.onMessage()

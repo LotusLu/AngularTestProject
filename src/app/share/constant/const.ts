@@ -10,4 +10,7 @@ export class Const {
     public static readonly LOGIN_USER: string = 'loginUser';
     public static readonly USER_TYPE: string = 'userType';
     public static readonly ADMIN_ROLE_CODE: string = 'admin';
+    public static readonly BACK_END_URL: string = 'http://192.168.8.102:2222/';
+    public static readonly SOCKET_BACK_END_URL: string = 'http://192.168.8.102:9092/';
+
 }

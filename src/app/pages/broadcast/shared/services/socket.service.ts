@@ -4,9 +4,9 @@ import { Observer } from 'rxjs/Observer';
 import { Message } from '../model/message';
 
 import * as socketIo from 'socket.io-client';
+import { Const } from '../../../../share/constant/const';
 
-//const SERVER_URL = 'http://localhost:8080';
-const SERVER_URL = 'http://192.168.8.102:9092/';
+const SERVER_URL = Const.SOCKET_BACK_END_URL;
 
 @Injectable()
 export class SocketService {
@@ -21,9 +21,7 @@ export class SocketService {
     }
 
     public onMessage(): Observable<string> {
-        console.log("onMessage");
         return new Observable<string>(observer => {
-            console.log("ObservableonMessage");
             this.socket.on('message', (data: string) => observer.next(data));
         });
     }
