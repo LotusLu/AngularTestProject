@@ -1,18 +1,14 @@
 export class PaymentEnqueryData {
   //姓名
-  userId : string;
-  //費用種類
-  feeName : string;
+  custId : string;
   //繳款期限
-  dueDate : string;
+  paymentExpiry : string;
   //費用代碼
-  chargeNumber : string;
+  feeCode : string;
   //銷帳編號
-  settleNumber : string;
-  //繳款幣別
-  ccy : string;
+  accountNumber : string;
   //繳款金額
-  amount : number;
+  accountBalance : number;
   //狀態
-  state : string;
+  paymentStatus : string;
 }

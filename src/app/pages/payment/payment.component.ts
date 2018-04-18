@@ -40,6 +40,7 @@ export class PaymentComponent implements OnInit {
     let options = new RequestOptions({ headers: headers });
     const formData = new FormData();
     formData.append("file", this.selectedFile, this.selectedFile.name);
+    formData.append("appId", sessionStorage.getItem(Const.CHANNEL));
     this.http.post(this.paymentUploadURL, formData, options)
       .catch(error => this.handle.handleError(error))
       .subscribe(
@@ -48,6 +49,7 @@ export class PaymentComponent implements OnInit {
           this.alertService.success("Upload Finish!");
         },
         error => {
+          console.log(error);
           this.alertService.error(error);
         }
       );

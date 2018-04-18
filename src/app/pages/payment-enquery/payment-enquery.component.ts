@@ -42,7 +42,15 @@ export class PaymentEnqueryComponent implements OnInit {
       res => {
         console.log(res);
         this.paymentEnqueryDatas = res;
-        this.alertService.success("Query Finish!");
+        // for (let entry of this.paymentEnqueryDatas) {
+        //   console.log(entry);
+        // }
+        console.log(this.paymentEnqueryDatas);
+        if (res['length'] === 0) {
+          this.alertService.success("查無資料!");
+        } else {
+          this.alertService.success("查詢結束!");
+        }
       },
       error => {
         this.alertService.error(error);
