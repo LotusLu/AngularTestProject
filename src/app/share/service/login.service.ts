@@ -10,9 +10,8 @@ import { LoginData } from '../../pages/login/login-model/login-model';
 
 @Injectable()
 export class LoginService {
-  //public userLoginURL = 'https://reqres.in/api/login/';
-
-  public userLoginURL = 'http://192.168.8.106:18081/oauth/token';
+  public userLoginURL = 'https://reqres.in/api/login/';
+  //public userLoginURL = 'http://192.168.8.106:18083/oauth/token';
   public subject: Subject<LoginData> = new Subject<LoginData>();
 
   constructor(public http: Http,
@@ -29,20 +28,12 @@ export class LoginService {
     sessionStorage.setItem(Const.CHANNEL, user.channel);
     let headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
-    console.log('Basic ' + btoa('ts-client' + ":" + 'ts-secret'));
-    headers.append('Authorization', 'Basic ' + btoa('ts-client' + ":" + 'ts-secret'));
-
-    let optionsArgs: RequestOptionsArgs = { headers: headers, withCredentials: true }
-    let options = new RequestOptions(optionsArgs)
-
-
-    const formData = new FormData();
-    formData.append("username", "Alex123");
-    formData.append("password", "password");
-    formData.append("grant_type", "password");
+    headers.append('Authorization', 'Basic ' + btoa('accountservice' + ":" + '123456'));
+    //headers.append('Authorization', 'Basic ' + btoa('ts-client' + ":" + 'ts-secret'));
     return this.http
       //.post(this.userLoginURL, { email: user.userId, password: user.password })
-      .post(this.userLoginURL, formData, options)
+      // post(this.userLoginURL, 'username=' + user.userId + '&password=' + user.password + '&grant_type=password', { headers: headers })
+      .post(this.userLoginURL, 'username=admin&password=123456&grant_type=password', { headers: headers })
       .map((response: Response) => {
         let token = response.json();
         console.log(token);
