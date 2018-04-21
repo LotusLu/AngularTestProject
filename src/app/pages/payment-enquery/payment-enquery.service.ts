@@ -8,7 +8,8 @@ import { Const } from '../../share/constant/const';
 
 @Injectable()
 export class PaymentEnqueryService {
-    public paymentEnqueryURL = Const.BACK_END_URL + "queryUserItem";
+    public paymentEnqueryURL = "/meta/payment-enquery-mock.json";
+    // public paymentEnqueryURL = Const.BACK_END_URL + "queryUserItem";
 
     constructor(public http: Http,
         public handle: Handle
@@ -18,10 +19,11 @@ export class PaymentEnqueryService {
     public queryPaymentList(searchUserId: string, channel: string) {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        headers.append(Const.TOKEN, sessionStorage.getItem(Const.TOKEN));
+        headers.append('Authorization', 'Basic ' + btoa(Const.AUTH_ACCOUNT + ":" + Const.AUTH_PASSWORD));
         let params = new URLSearchParams();
         params.append('searchUserId', searchUserId);
         params.append('channel', channel);
+        params.append(Const.TOKEN, sessionStorage.getItem(Const.TOKEN));
         let options = new RequestOptions({ headers: headers, params: params });
 
         return this.http.get(this.paymentEnqueryURL, options)

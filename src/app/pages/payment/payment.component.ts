@@ -36,11 +36,11 @@ export class PaymentComponent implements OnInit {
 
   public onUpload() {
     let headers = new Headers();
-    headers.append(Const.TOKEN, sessionStorage.getItem(Const.TOKEN));
     let options = new RequestOptions({ headers: headers });
     const formData = new FormData();
     formData.append("file", this.selectedFile, this.selectedFile.name);
     formData.append("appId", sessionStorage.getItem(Const.CHANNEL));
+    formData.append(Const.TOKEN, sessionStorage.getItem(Const.TOKEN));
     this.http.post(this.paymentUploadURL, formData, options)
       .catch(error => this.handle.handleError(error))
       .subscribe(

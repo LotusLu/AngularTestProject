@@ -2,14 +2,12 @@
 "userItems":[
     {
    "id": 1,
-   "userId": "admin",
-   "password": "admin",
+   "userId": "sam",
    "userType": "admin"
     },
     {
    "id": 2,
-   "userId": "user",
-   "password": "user",
+   "userId": "lotus",
    "userType": "user"
     }
 ]

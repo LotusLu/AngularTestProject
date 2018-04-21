@@ -41,10 +41,9 @@ export class PaymentEnqueryComponent implements OnInit {
     }).subscribe(
       res => {
         console.log(res);
-        this.paymentEnqueryDatas = res;
-        // for (let entry of this.paymentEnqueryDatas) {
-        //   console.log(entry);
-        // }
+        this.paymentEnqueryDatas = res["items"];
+        // this.paymentEnqueryDatas = res;
+        
         console.log(this.paymentEnqueryDatas);
         if (res['length'] === 0) {
           this.alertService.success("查無資料!");

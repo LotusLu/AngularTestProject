@@ -28,12 +28,11 @@ export class LoginService {
     sessionStorage.setItem(Const.CHANNEL, user.channel);
     let headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
-    headers.append('Authorization', 'Basic ' + btoa('accountservice' + ":" + '123456'));
-    //headers.append('Authorization', 'Basic ' + btoa('ts-client' + ":" + 'ts-secret'));
+    headers.append('Authorization', 'Basic ' + btoa(Const.AUTH_ACCOUNT + ":" + Const.AUTH_PASSWORD));
     return this.http
       //.post(this.userLoginURL, { email: user.userId, password: user.password })
-      // post(this.userLoginURL, 'username=' + user.userId + '&password=' + user.password + '&grant_type=password', { headers: headers })
-      .post(this.userLoginURL, 'username=admin&password=123456&grant_type=password', { headers: headers })
+      .post(this.userLoginURL, 'username=' + user.userId + '&password=' + user.password + '&grant_type=password', { headers: headers })
+      //.post(this.userLoginURL, 'username=admin&password=123456&grant_type=password', { headers: headers })
       .map((response: Response) => {
         let token = response.json();
         console.log(token);

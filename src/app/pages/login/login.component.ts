@@ -29,7 +29,7 @@ export class Login {
     public http: Http
   ) {
     this.form = fb.group({
-      'userId': ['', Validators.compose([Validators.required, Validators.minLength(4)])],
+      'userId': ['', Validators.compose([Validators.required, Validators.minLength(3)])],
       'password': ['', Validators.compose([Validators.required, Validators.minLength(4)])],
       'channel': ['', Validators.compose([Validators.required])]
     });
