@@ -7,19 +7,33 @@ import { Const } from '../../share/constant/const';
 
 @Injectable()
 export class BatchService {
-    public testBatchURL = "https://reqres.in/api/unknown/23";
+    public saveSumFeeURL = Const.BACK_END_URL + 'saveSumfee' + Const.URL_PARAM_TOKEN + sessionStorage.getItem(Const.TOKEN);
+    public paymentReportURL = Const.BACK_END_URL + 'paymentReport' + Const.URL_PARAM_TOKEN + sessionStorage.getItem(Const.TOKEN);
+    public sendMailURL = Const.BACK_END_URL + 'send' + Const.URL_PARAM_TOKEN + sessionStorage.getItem(Const.TOKEN);
 
     constructor(public http: Http,
         public handle: Handle
     ) {
     }
 
-    public doTestBatch() {
+    public doSaveSumfe() {
         let headers = new Headers();
-        headers.append(Const.TOKEN, sessionStorage.getItem(Const.TOKEN));
-        let params = new URLSearchParams();
-        let options = new RequestOptions({ headers: headers, params: params });
-        return this.http.get(this.testBatchURL, options)
+        headers.append('Authorization', 'Basic ' + btoa(Const.AUTH_ACCOUNT + ":" + Const.AUTH_PASSWORD));
+        return this.http.get(this.saveSumFeeURL, { headers: headers })
+            .catch(error => this.handle.handleError(error));
+    }
+
+    public doPaymentReport() {
+        let headers = new Headers();
+        headers.append('Authorization', 'Basic ' + btoa(Const.AUTH_ACCOUNT + ":" + Const.AUTH_PASSWORD));
+        return this.http.get(this.paymentReportURL + Const.URL_PARAM_TOKEN + sessionStorage.getItem(Const.TOKEN), { headers: headers })
+            .catch(error => this.handle.handleError(error));
+    }
+
+    public doSendEmail() {
+        let headers = new Headers();
+        headers.append('Authorization', 'Basic ' + btoa(Const.AUTH_ACCOUNT + ":" + Const.AUTH_PASSWORD));
+        return this.http.get(this.sendMailURL, { headers: headers })
             .catch(error => this.handle.handleError(error));
     }
 

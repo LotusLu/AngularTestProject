@@ -1,21 +1,30 @@
 <div class="widgets">
 
-    <div class="row">
-      <div class="col-md-6">
-        <ba-card baCardClass="with-scroll">
-            <div class="col-sm-4 col-6">
-                <button type="button" class="btn btn-success btn-lg" (click)="onTestBatch();">批次測試</button>
-              </div>
-        </ba-card>
-      </div>
-
-    </div>
-
-    <div>
-        <div class="form-group has-error">
-          <alert></alert>
+  <div class="row">
+    <div class="col-md-6">
+      <ba-card baCardClass="with-scroll">
+        <div class="col-sm-12 col-12">
+          <button type="button" class="btn btn-success btn-lg" (click)="onSaveSumfee();">發送繳費狀況</button>
         </div>
+      </ba-card>
+      <ba-card baCardClass="with-scroll">
+        <div class="col-sm-12 col-12">
+          <button type="button" class="btn btn-success btn-lg" (click)="onPaymentReport();">產生LOG</button>
+        </div>
+      </ba-card>
+      <ba-card baCardClass="with-scroll">
+        <div class="col-sm-12 col-12">
+          <button type="button" class="btn btn-success btn-lg" (click)="onSendEmail();">發送MAIL</button>
+        </div>
+      </ba-card>
     </div>
-  
+
   </div>
-  
+
+  <div>
+    <div class="form-group has-error">
+      <alert></alert>
+    </div>
+  </div>
+
+</div>

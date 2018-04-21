@@ -40,10 +40,8 @@ export class PaymentEnqueryComponent implements OnInit {
       return result;
     }).subscribe(
       res => {
-        console.log(res);
-        this.paymentEnqueryDatas = res["items"];
-        // this.paymentEnqueryDatas = res;
-        
+        //this.paymentEnqueryDatas = res["items"];
+        this.paymentEnqueryDatas = res;
         console.log(this.paymentEnqueryDatas);
         if (res['length'] === 0) {
           this.alertService.success("查無資料!");

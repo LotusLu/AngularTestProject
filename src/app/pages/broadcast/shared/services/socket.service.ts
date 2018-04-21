@@ -5,6 +5,7 @@ import { Message } from '../model/message';
 
 import * as socketIo from 'socket.io-client';
 import { Const } from '../../../../share/constant/const';
+import { Event_DISCONNECT } from '../model/event';
 
 const SERVER_URL = Const.SOCKET_BACK_END_URL;
 
@@ -30,5 +31,11 @@ export class SocketService {
         return new Observable<any>(observer => {
             this.socket.on(event, () => observer.next());
         });
+    }
+
+    public disconnected(): void {
+        if (this.socket) {
+            this.socket.emit(Event_DISCONNECT);
+        }
     }
 }

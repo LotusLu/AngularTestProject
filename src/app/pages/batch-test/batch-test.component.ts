@@ -19,9 +19,8 @@ export class BatchTestComponent implements OnInit {
   ngOnInit() {
     this.startupService.checkToken();
   }
-
-  public onTestBatch(): void {
-    this.batchService.doTestBatch().subscribe(
+  public onSaveSumfee(): void {
+    this.batchService.doSaveSumfe().subscribe(
       data => {
         console.log(data);
         this.alertService.success(data["_body"]);
@@ -31,4 +30,29 @@ export class BatchTestComponent implements OnInit {
       }
     );
   }
+
+  public onPaymentReport(): void {
+    this.batchService.doPaymentReport().subscribe(
+      data => {
+        console.log(data);
+        this.alertService.success(data["_body"]);
+      },
+      error => {
+        this.alertService.error(error);
+      }
+    );
+  }
+
+  public onSendEmail(): void {
+    this.batchService.doSendEmail().subscribe(
+      data => {
+        console.log(data);
+        this.alertService.success(data["_body"]);
+      },
+      error => {
+        this.alertService.error(error);
+      }
+    );
+  }
+
 }

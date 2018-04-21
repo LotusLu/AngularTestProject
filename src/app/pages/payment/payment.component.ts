@@ -11,7 +11,7 @@ import { Const } from '../../share/constant/const';
   styleUrls: ['./payment.component.scss']
 })
 export class PaymentComponent implements OnInit {
-  public paymentUploadURL = Const.BACK_END_URL + "sendFile";
+  public paymentUploadURL = Const.BACK_END_URL + "sendFile" + Const.URL_PARAM_TOKEN + sessionStorage.getItem(Const.TOKEN);;
   selectFileName: string;
   selectedFile: File;
 
@@ -36,11 +36,11 @@ export class PaymentComponent implements OnInit {
 
   public onUpload() {
     let headers = new Headers();
+    headers.append('Authorization', 'Basic ' + btoa(Const.AUTH_ACCOUNT + ":" + Const.AUTH_PASSWORD));
     let options = new RequestOptions({ headers: headers });
     const formData = new FormData();
     formData.append("file", this.selectedFile, this.selectedFile.name);
     formData.append("appId", sessionStorage.getItem(Const.CHANNEL));
-    formData.append(Const.TOKEN, sessionStorage.getItem(Const.TOKEN));
     this.http.post(this.paymentUploadURL, formData, options)
       .catch(error => this.handle.handleError(error))
       .subscribe(
@@ -50,7 +50,7 @@ export class PaymentComponent implements OnInit {
         },
         error => {
           console.log(error);
-          this.alertService.error(error);
+          this.alertService.error('上傳格式有誤，請確認!!!');
         }
       );
 

@@ -11,6 +11,7 @@ import { Event_CONNECT, Event_DISCONNECT } from './broadcast/shared/model/event'
 import { DefaultModal } from './ui/components/modals/default-modal/default-modal.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Const } from '../share/constant/const';
+import { Session } from 'selenium-webdriver';
 
 @Component({
   selector: 'pages',
@@ -68,7 +69,7 @@ export class Pages {
 
     this.socketService.onEvent(Event_DISCONNECT)
       .subscribe(() => {
-        console.log('disconnected');
+        console.log('disconnected');[]
       });
   }
 

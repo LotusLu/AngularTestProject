@@ -67,7 +67,11 @@ export class Login {
           );
         },
         error => {
-          this.alertService.error(error);
+          if('400'===error.status.toString()){
+            this.alertService.error('UserId/Password is invalid');
+          }else{
+            this.alertService.error(error);
+          }         
         }
       );
     }
