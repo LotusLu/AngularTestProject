@@ -1,13 +1,35 @@
 <div class="col-md-10">
     <ba-card cardTitle="企業整批上傳" baCardClass="with-scroll">
         <div class="input-group">
-            <input type="text" placeholder="{{selectFileName}}" readonly >
+            <input type="text" placeholder="{{selectFileName}}" readonly>
             <span class="input-group-btn">
-              <input style="display:none" type="file" (change)="onFileSelect($event);" accept=".csv,.txt,.json" #fileInput >
-              <button class="btn btn-success" type="button" (click)="fileInput.click()">Browse</button>
+                <input style="display:none" type="file" (change)="onFileSelect($event);" accept=".csv,.txt,.json" #fileInput>
+                <button class="btn btn-success" type="button" (click)="fileInput.click()">Browse</button>
             </span>
         </div>
     </ba-card>
     <alert></alert>
     <button class="btn btn-success" type="button" (click)="onUpload();">Upload</button>
+    <br/>
+    <br/>
+    <div class="vertical-scroll" *ngIf="paymentEnqueryDatas">
+        <table class="table">
+            <tr>
+                <th>姓名</th>
+                <th>繳款期限</th>
+                <th>費用代碼</th>
+                <th>銷帳編號</th>
+                <th>繳款金額</th>
+            </tr>
+            <tr *ngFor="let item of paymentEnqueryDatas">
+                <td>{{item.custId}}</td>
+                <td>{{item.paymentExpiry}}</td>
+                <td>{{item.feeCode}}</td>
+                <td>{{item.accountNumber}}</td>
+                <td>{{item.accountBalance}}</td>
+            </tr>
+        </table>
+    </div>
+
+
 </div>

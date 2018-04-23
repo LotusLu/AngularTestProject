@@ -1,14 +1,21 @@
 export class PaymentEnqueryData {
   //姓名
-  custId : string;
+  custId: string;
   //繳款期限
-  paymentExpiry : string;
+  paymentExpiry: string;
   //費用代碼
-  feeCode : string;
+  feeCode: string;
   //銷帳編號
-  accountNumber : string;
+  accountNumber: string;
   //繳款金額
-  accountBalance : number;
+  accountBalance: number;
   //狀態
-  paymentStatus : string;
+  paymentStatus: string;
+  //通路
+  appId: string;
+  //銀行代碼
+  bankCode: string;
+  //繳款日
+  paymentDate: string;
+
 }

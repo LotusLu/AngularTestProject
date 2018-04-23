@@ -27,6 +27,18 @@ export const PAGES_MENU = [
         }
       },
       {
+        path: 'paymentFee',
+        data: {
+          menu: {
+            title: '繳費',
+            icon: 'ion-stats-bars',
+            selected: false,
+            expanded: false,
+            order: 0
+          }
+        }
+      },
+      {
         path: 'paymentEnquery',
         data: {
           menu: {
