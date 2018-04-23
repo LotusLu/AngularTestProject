@@ -13,6 +13,12 @@ export class IconsService {
         path: '/pages/payment'
       },
       {
+        color: 'danger',
+        img: 'Euro-Coin',
+        name: '繳費',
+        path: '/pages/paymentFee'
+      },
+      {
         color: 'warning',
         img: 'Money-Increase',
         name: '繳費單查詢',
