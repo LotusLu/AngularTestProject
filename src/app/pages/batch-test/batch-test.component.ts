@@ -20,6 +20,7 @@ export class BatchTestComponent implements OnInit {
     this.startupService.checkToken();
   }
   public onSaveSumfee(): void {
+    this.alertService.close();
     this.batchService.doSaveSumfe().subscribe(
       data => {
         console.log(data);
@@ -32,6 +33,7 @@ export class BatchTestComponent implements OnInit {
   }
 
   public onPaymentReport(): void {
+    this.alertService.close();
     this.batchService.doPaymentReport().subscribe(
       data => {
         console.log(data);
@@ -44,6 +46,7 @@ export class BatchTestComponent implements OnInit {
   }
 
   public onSendEmail(): void {
+    this.alertService.close();
     this.batchService.doSendEmail().subscribe(
       data => {
         console.log(data);

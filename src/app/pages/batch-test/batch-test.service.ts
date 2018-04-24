@@ -9,7 +9,7 @@ import { Const } from '../../share/constant/const';
 export class BatchService {
     public saveSumFeeURL = Const.BACK_END_URL + 'saveSumfee' + Const.URL_PARAM_TOKEN + sessionStorage.getItem(Const.TOKEN);
     public paymentReportURL = Const.BACK_END_URL + 'paymentReport' + Const.URL_PARAM_TOKEN + sessionStorage.getItem(Const.TOKEN);
-    public sendMailURL = 'http://192.168.8.102:3333/' + 'send' + Const.URL_PARAM_TOKEN + sessionStorage.getItem(Const.TOKEN);
+    public sendMailURL = Const.BACK_END_URL + 'send' + Const.URL_PARAM_TOKEN + sessionStorage.getItem(Const.TOKEN);
 
     constructor(public http: Http,
         public handle: Handle
