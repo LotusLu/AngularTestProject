@@ -13,7 +13,7 @@ import { PaymentEnqueryData } from '../payment-enquery/payment-enquery-data/paym
 })
 export class PaymentComponent implements OnInit {
   paymentEnqueryDatas: PaymentEnqueryData[];
-  public paymentUploadURL = Const.BACK_END_URL + "sendFile" + Const.URL_PARAM_TOKEN + sessionStorage.getItem(Const.TOKEN);;
+  public paymentUploadURL = Const.BACK_END_URL + "/loadbal-service/loadPaymentFee/v1/sendFile" + Const.URL_PARAM_TOKEN + sessionStorage.getItem(Const.TOKEN);;
   selectFileName: string;
   selectedFile: File;
 
@@ -57,7 +57,27 @@ export class PaymentComponent implements OnInit {
         .subscribe(
           data => {
             console.log(data);
-            this.paymentEnqueryDatas = data;
+            var resultArray: Array<any> = []
+            //單機測試
+            //res["items"].forEach(data => {
+            //正式
+            data.forEach(data => {
+              resultArray.push(
+                {
+                  "id": data.id,
+                  "custId": data.custId,
+                  "paymentExpiry": data.paymentExpiry,
+                  "formatPaymentExpiry": data.paymentExpiry.substring(0, 4) + '/' + data.paymentExpiry.substring(4, 6) + '/' + data.paymentExpiry.substring(6, 8),
+                  "feeCode": data.feeCode,
+                  "accountNumber": data.accountNumber,
+                  "accountBalance": data.accountBalance,
+                  "paymentStatus": data.paymentStatus,
+                  "appId": data.appId,
+                  "bankCode": data.bankCode,
+                  "paymentDate": data.paymentDate,
+                });
+            });
+            this.paymentEnqueryDatas = resultArray;
             this.alertService.success("上傳完成，清單如下!");
           },
           error => {

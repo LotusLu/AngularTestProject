@@ -45,30 +45,30 @@ export class PaymentEnqueryComponent implements OnInit {
       return result;
     }).subscribe(
       res => {
-        var resultArray: Array<any> = []
-        //單機測試
-        //res["items"].forEach(data => {
-        //正式
-        res.forEach(data => {
-          resultArray.push(
-            {
-              "id": data.id,
-              "custId": data.custId,
-              "paymentExpiry": data.paymentExpiry,
-              "formatPaymentExpiry": data.paymentExpiry.substring(0, 4) + '/' + data.paymentExpiry.substring(4, 6) + '/' + data.paymentExpiry.substring(6, 8),
-              "feeCode": data.feeCode,
-              "accountNumber": data.accountNumber,
-              "accountBalance": data.accountBalance,
-              "paymentStatus": data.paymentStatus,
-              "appId": data.appId,
-              "bankCode": data.bankCode,
-              "paymentDate": data.paymentDate,
-            });
-        });
-        this.paymentEnqueryDatas = resultArray;
         if (res['length'] === 0) {
           this.alertService.error("查無資料!");
         } else {
+          var resultArray: Array<any> = []
+          //單機測試
+          //res["items"].forEach(data => {
+          //正式
+          res.forEach(data => {
+            resultArray.push(
+              {
+                "id": data.id,
+                "custId": data.custId,
+                "paymentExpiry": data.paymentExpiry,
+                "formatPaymentExpiry": data.paymentExpiry.substring(0, 4) + '/' + data.paymentExpiry.substring(4, 6) + '/' + data.paymentExpiry.substring(6, 8),
+                "feeCode": data.feeCode,
+                "accountNumber": data.accountNumber,
+                "accountBalance": data.accountBalance,
+                "paymentStatus": data.paymentStatus,
+                "appId": data.appId,
+                "bankCode": data.bankCode,
+                "paymentDate": data.paymentDate,
+              });
+          });
+          this.paymentEnqueryDatas = resultArray;
           this.alertService.success("查詢結束!");
         }
       },

@@ -16,6 +16,8 @@ export class Handle implements ErrorHandler {
     console.log(errorJson);
     if ('invalid_token' === errorJson.error)
       return Observable.throw("Token已失效，請重新登入！");
+    if (errorJson.status && '429' === errorJson.status.toString())
+      return Observable.throw("連接過於頻繁，請稍待60秒！");
     else
       return Observable.throw(errorJson.message ? errorJson.message : error);
   }

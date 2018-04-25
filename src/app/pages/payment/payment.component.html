@@ -8,28 +8,32 @@
     </div>
     <alert></alert>
     <button type="button" class="btn btn-primary btn-with-icon nonPrint" (click)="onUpload();">
-        <i class="
-            ion-android-download nonPrint "></i>上傳</button>
+        <i class="ion-android-download nonPrint "></i>上傳</button>
     <br/>
     <br/>
-    <div class="vertical-scroll" *ngIf="paymentEnqueryDatas">
-        <table class="table">
-            <tr>
-                <th>姓名</th>
-                <th>繳款期限</th>
-                <th>費用代碼</th>
-                <th>銷帳編號</th>
-                <th>繳款金額</th>
-            </tr>
-            <tr *ngFor="let item of paymentEnqueryDatas">
-                <td>{{item.custId}}</td>
-                <td>{{item.paymentExpiry}}</td>
-                <td>{{item.feeCode}}</td>
-                <td>{{item.accountNumber}}</td>
-                <td>{{item.accountBalance}}</td>
-            </tr>
-        </table>
+    <div class="col-lg-12 col-md-12" *ngIf="paymentEnqueryDatas">
+        <ba-card cardTitle="上傳結果清單" baCardClass="with-scroll table-panel">
+            <div class="vertical-scroll">
+                <table class="table">
+                    <tr>
+                        <th>#</th>
+                        <th>姓名</th>
+                        <th>繳款期限</th>
+                        <th>費用代碼</th>
+                        <th>銷帳編號</th>
+                        <th>繳款金額</th>
+                    </tr>
+                    <tr *ngFor="let item of paymentEnqueryDatas;let recordIndex = index">
+                        <td>{{recordIndex+1}}</td>
+                        <td>{{item.custId}}</td>
+                        <td>{{item.formatPaymentExpiry}}</td>
+                        <td>{{item.feeCode}}</td>
+                        <td>{{item.accountNumber}}</td>
+                        <td>{{item.accountBalance|number:'1.2'}}</td>
+                    </tr>
+                </table>
+            </div>
+        </ba-card>
     </div>
-
 
 </div>

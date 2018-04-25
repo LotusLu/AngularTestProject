@@ -7,16 +7,16 @@ import { Const } from '../../share/constant/const';
 
 @Injectable()
 export class BatchService {
-    public saveSumFeeURL = Const.BACK_END_URL + 'saveSumfee' + Const.URL_PARAM_TOKEN + sessionStorage.getItem(Const.TOKEN);
-    public paymentReportURL = Const.BACK_END_URL + 'paymentReport' + Const.URL_PARAM_TOKEN + sessionStorage.getItem(Const.TOKEN);
-    public sendMailURL = Const.BACK_END_URL + 'send' + Const.URL_PARAM_TOKEN + sessionStorage.getItem(Const.TOKEN);
+    public saveSumFeeURL = Const.BACK_END_URL + 'loadbal-service/loadPaymentFee/v1/saveSumfee' + Const.URL_PARAM_TOKEN + sessionStorage.getItem(Const.TOKEN);
+    public paymentReportURL = Const.BACK_END_URL + 'loadbal-service/loadPaymentFee/v1/paymentReport' + Const.URL_PARAM_TOKEN + sessionStorage.getItem(Const.TOKEN);
+    public sendMailURL = Const.BACK_END_URL + 'loadbal-service/loadPaymentFee/v1/send' + Const.URL_PARAM_TOKEN + sessionStorage.getItem(Const.TOKEN);
 
     constructor(public http: Http,
         public handle: Handle
     ) {
     }
 
-    public doSaveSumfe() {
+    public doSaveSumfee() {
         let headers = new Headers();
         headers.append('Authorization', 'Basic ' + btoa(Const.AUTH_ACCOUNT + ":" + Const.AUTH_PASSWORD));
         return this.http.get(this.saveSumFeeURL, { headers: headers })

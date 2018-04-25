@@ -21,7 +21,7 @@ export class BatchTestComponent implements OnInit {
   }
   public onSaveSumfee(): void {
     this.alertService.close();
-    this.batchService.doSaveSumfe().subscribe(
+    this.batchService.doSaveSumfee().subscribe(
       data => {
         console.log(data);
         this.alertService.success(data["_body"]);
