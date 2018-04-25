@@ -51,7 +51,8 @@ export class Pages {
       CURRENT_PAGES_MENU = USER_PAGES_MENU;
     }
     this._menuService.updateMenuByRoutes(CURRENT_PAGES_MENU);
-    //this.initIoConnection();
+    //正式
+    this.initIoConnection();
   }
 
   private initIoConnection(): void {

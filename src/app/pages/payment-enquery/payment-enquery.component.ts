@@ -46,8 +46,10 @@ export class PaymentEnqueryComponent implements OnInit {
     }).subscribe(
       res => {
         var resultArray: Array<any> = []
-        //res.forEach(i => {
-        res["items"].forEach(data => {
+        //單機測試
+        //res["items"].forEach(data => {
+        //正式
+        res.forEach(data => {
           resultArray.push(
             {
               "id": data.id,

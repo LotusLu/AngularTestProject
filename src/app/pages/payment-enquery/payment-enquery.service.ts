@@ -8,8 +8,10 @@ import { Const } from '../../share/constant/const';
 
 @Injectable()
 export class PaymentEnqueryService {
-    public paymentEnqueryURL = "/meta/payment-enquery-mock.json";
-    //public paymentEnqueryURL = Const.BACK_END_URL + "queryUserItem" + Const.URL_PARAM_TOKEN + sessionStorage.getItem(Const.TOKEN);
+    //單機測試
+    //public paymentEnqueryURL = "/meta/payment-enquery-mock.json";
+    //正式
+    public paymentEnqueryURL = Const.BACK_END_URL + "queryUserItem" + Const.URL_PARAM_TOKEN + sessionStorage.getItem(Const.TOKEN);
 
     constructor(public http: Http,
         public handle: Handle
