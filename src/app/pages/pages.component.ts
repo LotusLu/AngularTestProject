@@ -17,7 +17,7 @@ import { Session } from 'selenium-webdriver';
   selector: 'pages',
   template: `
     <ba-sidebar class="nonPrint"></ba-sidebar>
-    <ba-page-top></ba-page-top>
+    <ba-page-top class="nonPrint"></ba-page-top>
     <div class="al-main">
       <div class="al-content">
         <ba-content-top ></ba-content-top>

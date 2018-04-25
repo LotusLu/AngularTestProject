@@ -32,21 +32,40 @@ export class PaymentEnqueryComponent implements OnInit {
     this.startupService.checkToken();
   }
 
+  /**是否要列印 */
+  printPaymentInfo(data: PaymentEnqueryData) {
+    data.done = !data.done;
+  }
+
   public onQuery(): void {
     this.paymentEnqueryDatas = null;
     this.alertService.close();
     this.paymentEnqueryService.queryPaymentList(this.userId.value, sessionStorage.getItem(Const.CHANNEL)).map(res => {
-      console.log(res);
       let result = res.json();
-      console.log(result);
       return result;
     }).subscribe(
       res => {
-        this.paymentEnqueryDatas = res["items"];
-        //this.paymentEnqueryDatas = res;
-        console.log(this.paymentEnqueryDatas);
+        var resultArray: Array<any> = []
+        //res.forEach(i => {
+        res["items"].forEach(data => {
+          resultArray.push(
+            {
+              "id": data.id,
+              "custId": data.custId,
+              "paymentExpiry": data.paymentExpiry,
+              "formatPaymentExpiry": data.paymentExpiry.substring(0, 4) + '/' + data.paymentExpiry.substring(4, 6) + '/' + data.paymentExpiry.substring(6, 8),
+              "feeCode": data.feeCode,
+              "accountNumber": data.accountNumber,
+              "accountBalance": data.accountBalance,
+              "paymentStatus": data.paymentStatus,
+              "appId": data.appId,
+              "bankCode": data.bankCode,
+              "paymentDate": data.paymentDate,
+            });
+        });
+        this.paymentEnqueryDatas = resultArray;
         if (res['length'] === 0) {
-          this.alertService.success("查無資料!");
+          this.alertService.error("查無資料!");
         } else {
           this.alertService.success("查詢結束!");
         }

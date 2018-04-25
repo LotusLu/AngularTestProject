@@ -1,36 +1,40 @@
 {
-
-"items":[
+  "items": [
     {
-      "custId":"Lotus",
-      "paymentExpiry":"20180409",
-      "feeCode":"014",
-      "accountNumber":"1234567890123456",
-      "accountBalance":100,
-      "paymentStatus":""
-     },{
-        "custId":"Lotus",
-        "paymentExpiry":"20180410",
-        "feeCode":"068",
-        "accountNumber":"0123456123456789",
-        "accountBalance":200,
-        "paymentStatus":""
-      },{
-        "custId":"Lotus",
-        "paymentExpiry":"20180410",
-        "feeCode":"068",
-        "accountNumber":"0123456123456789",
-        "accountBalance":200,
-        "paymentStatus":""
-      },{
-        "custId":"Lotus",
-        "paymentExpiry":"20180410",
-        "feeCode":"068",
-        "accountNumber":"0123456123456789",
-        "accountBalance":200,
-        "paymentStatus":""
-      }         
-]
+      "id": 1,
+      "custId": "Lotus",
+      "paymentExpiry": "20180409",
+      "feeCode": "014",
+      "accountNumber": "1234567890123456",
+      "accountBalance": 1111100,
+      "paymentStatus": ""
+    },
+    {
+      "id": 2,
+      "custId": "Lotus",
+      "paymentExpiry": "20180410",
+      "feeCode": "068",
+      "accountNumber": "0123456123456789",
+      "accountBalance": 200,
+      "paymentStatus": ""
+    },
+    {
+      "id": 3,
+      "custId": "Lotus",
+      "paymentExpiry": "20180410",
+      "feeCode": "068",
+      "accountNumber": "0123456123456789",
+      "accountBalance": 200,
+      "paymentStatus": ""
+    },
+    {
+      "id": 4,
+      "custId": "Lotus",
+      "paymentExpiry": "20180410",
+      "feeCode": "068",
+      "accountNumber": "0123456123456789",
+      "accountBalance": 200,
+      "paymentStatus": ""
+    }
+  ]
 }
-
-
