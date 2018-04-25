@@ -1,15 +1,15 @@
 <div class="col-md-10">
-    <ba-card cardTitle="企業整批上傳" baCardClass="with-scroll">
-        <div class="input-group">
-            <input type="text" placeholder="{{selectFileName}}" readonly>
-            <span class="input-group-btn">
-                <input style="display:none" type="file" (change)="onFileSelect($event);" accept=".csv,.txt,.json" #fileInput>
-                <button class="btn btn-success" type="button" (click)="fileInput.click()">Browse</button>
-            </span>
-        </div>
-    </ba-card>
+    <div class="input-group">
+        <input type="text" placeholder="{{selectFileName}}" readonly class="form-control">
+        <span class="input-group-btn">
+            <input style="display:none" type="file" (change)="onFileSelect($event);" accept=".csv,.txt,.json" #fileInput>
+            <button class="btn btn-success" type="button" (click)="fileInput.click()">Browse</button>
+        </span>
+    </div>
     <alert></alert>
-    <button class="btn btn-success" type="button" (click)="onUpload();">Upload</button>
+    <button type="button" class="btn btn-primary btn-with-icon nonPrint" (click)="onUpload();">
+        <i class="
+            ion-android-download nonPrint "></i>上傳</button>
     <br/>
     <br/>
     <div class="vertical-scroll" *ngIf="paymentEnqueryDatas">

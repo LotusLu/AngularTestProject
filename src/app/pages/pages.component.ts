@@ -16,11 +16,11 @@ import { Session } from 'selenium-webdriver';
 @Component({
   selector: 'pages',
   template: `
-    <ba-sidebar></ba-sidebar>
+    <ba-sidebar class="nonPrint"></ba-sidebar>
     <ba-page-top></ba-page-top>
     <div class="al-main">
       <div class="al-content">
-        <ba-content-top></ba-content-top>
+        <ba-content-top ></ba-content-top>
         <router-outlet></router-outlet>
       </div>
     </div>
@@ -51,7 +51,7 @@ export class Pages {
       CURRENT_PAGES_MENU = USER_PAGES_MENU;
     }
     this._menuService.updateMenuByRoutes(CURRENT_PAGES_MENU);
-    this.initIoConnection();
+    //this.initIoConnection();
   }
 
   private initIoConnection(): void {
@@ -73,7 +73,7 @@ export class Pages {
       });
   }
 
-  private staticModalShow(message:string) {
+  private staticModalShow(message: string) {
     const activeModal = this.modalService.open(DefaultModal, {
       size: 'sm',
       backdrop: 'static'

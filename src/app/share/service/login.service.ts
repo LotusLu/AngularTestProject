@@ -11,8 +11,8 @@ import { SocketService } from '../../pages/broadcast/shared/services/socket.serv
 
 @Injectable()
 export class LoginService {
-  //public userLoginURL = 'https://reqres.in/api/login/';
-  public userLoginURL = Const.AUTH_URL + 'oauth/token';
+  public userLoginURL = 'https://reqres.in/api/login/';
+  //public userLoginURL = Const.AUTH_URL + 'oauth/token';
   public subject: Subject<LoginData> = new Subject<LoginData>();
 
   constructor(public http: Http,

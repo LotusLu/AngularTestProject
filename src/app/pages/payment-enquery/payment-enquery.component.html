@@ -1,4 +1,4 @@
-<form [formGroup]="form" (ngSubmit)="onQuery()" class="form-horizontal">
+<form [formGroup]="form" (ngSubmit)="onQuery()" class="form-horizontal nonPrint">
   <div class="input-group" [ngClass]="{'has-error': (!userId.valid && userId.touched), 'has-success': (userId.valid && userId.touched)}">
     <input [formControl]="userId" type="text" class="form-control with-danger-addon" id="inputUserId3" placeholder="Search for...">
     <div class="input-group-btn">
@@ -6,59 +6,51 @@
     </div>
   </div>
 </form>
-<alert></alert>
+<alert class="nonPrint"></alert>
+<button *ngIf="paymentEnqueryDatas" type="button" class="btn btn-primary btn-with-icon nonPrint" onclick="print();">
+  <i class="
+  ion-android-download nonPrint "></i>列印</button>
 
-<div *ngFor="let item of paymentEnqueryDatas">
-  <div class="widgets">
-    <div>
-      <div>
-        <div>
-          <ba-card cardTitle="繳款明細" baCardClass="with-scroll">
-            <div class="row">
-              <div class="col-sm-3">
-                <div class="form-group">
-                  <label>姓名</label>
-                  <label>{{item.custId}}</label>
-                </div>
-              </div>
-              <div class="col-sm-3">
-                <div class="form-group">
-                  <label>繳款期限</label>
-                  <label>{{item.paymentExpiry}}</label>
-                </div>
-              </div>
-              <div class="col-sm-3">
-                <div class="form-group">
-                  <label>繳款金額</label>
-                  <label>{{item.accountBalance}}</label>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <ngx-barcode bc-value="{{item.paymentExpiry}}{{item.feeCode}}" [bc-display-value]="true" [bc-element-type]="img" [bc-height]="35"
-                    [bc-background]="transparent"></ngx-barcode>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-6">
-                  <div class="form-group">
-                    <ngx-barcode bc-value="{{item.accountNumber}}" [bc-display-value]="true" [bc-element-type]="img" [bc-height]="35" [bc-background]="transparent"></ngx-barcode>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                  <div class="col-sm-6">
-                    <div class="form-group">
-                      <ngx-barcode bc-value="{{item.accountBalance}}" [bc-display-value]="true" [bc-element-type]="img" [bc-height]="35" [bc-background]="transparent"></ngx-barcode>
-                    </div>
-                  </div>
-                </div>
-          </ba-card>
+<div class="row">
+  <div class="col-md-6" *ngFor="let item of paymentEnqueryDatas ">
+    <ba-card cardTitle="繳款明細 " baCardClass="with-scroll ">
+      <div class="row col-sm-6 ">
+        <div class="form-group ">
+          <label>姓名</label>
+          <label>{{item.custId}}</label>
         </div>
       </div>
-    </div>
+      <div class="row col-sm-6 ">
+        <div class="form-group ">
+          <label>繳款期限</label>
+          <label>{{item.paymentExpiry}}</label>
+        </div>
+      </div>
+      <div class="row col-sm-6 ">
+        <div class="form-group ">
+          <label>繳款金額</label>
+          <label>{{item.accountBalance}}</label>
+        </div>
+      </div>
+
+      <div class="row col-sm-6 ">
+        <div class="form-group ">
+          <ngx-barcode bc-value="{{item.paymentExpiry}}{{item.feeCode}} " [bc-display-value]="true
+      " [bc-element-type]="img " [bc-height]="35 " [bc-background]="transparent "></ngx-barcode>
+        </div>
+      </div>
+      <div class="row col-sm-6 ">
+        <div class="form-group ">
+          <ngx-barcode bc-value="{{item.accountNumber}} " [bc-display-value]="true " [bc-element-type]="img
+      " [bc-height]="35 " [bc-background]="transparent "></ngx-barcode>
+        </div>
+      </div>
+      <div class="row col-sm-6 ">
+        <div class="form-group ">
+          <ngx-barcode bc-value="{{item.accountBalance}} " [bc-display-value]="true " [bc-element-type]="img
+      " [bc-height]="35 " [bc-background]="transparent "></ngx-barcode>
+        </div>
+      </div>
+    </ba-card>
   </div>
 </div>

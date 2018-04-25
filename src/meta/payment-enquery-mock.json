@@ -15,7 +15,21 @@
         "accountNumber":"0123456123456789",
         "accountBalance":200,
         "paymentStatus":""
-      }   
+      },{
+        "custId":"Lotus",
+        "paymentExpiry":"20180410",
+        "feeCode":"068",
+        "accountNumber":"0123456123456789",
+        "accountBalance":200,
+        "paymentStatus":""
+      },{
+        "custId":"Lotus",
+        "paymentExpiry":"20180410",
+        "feeCode":"068",
+        "accountNumber":"0123456123456789",
+        "accountBalance":200,
+        "paymentStatus":""
+      }         
 ]
 }
 

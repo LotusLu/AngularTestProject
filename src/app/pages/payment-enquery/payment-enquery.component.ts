@@ -12,7 +12,7 @@ import { Const } from '../../share/constant/const';
   styleUrls: ['./payment-enquery.component.scss']
 })
 export class PaymentEnqueryComponent implements OnInit {
-  paymentEnqueryDatas: PaymentEnqueryData[] = [];
+  paymentEnqueryDatas: PaymentEnqueryData[];
 
   public form: FormGroup;
   public userId: AbstractControl;
@@ -33,6 +33,8 @@ export class PaymentEnqueryComponent implements OnInit {
   }
 
   public onQuery(): void {
+    this.paymentEnqueryDatas = null;
+    this.alertService.close();
     this.paymentEnqueryService.queryPaymentList(this.userId.value, sessionStorage.getItem(Const.CHANNEL)).map(res => {
       console.log(res);
       let result = res.json();
@@ -40,8 +42,8 @@ export class PaymentEnqueryComponent implements OnInit {
       return result;
     }).subscribe(
       res => {
-        //this.paymentEnqueryDatas = res["items"];
-        this.paymentEnqueryDatas = res;
+        this.paymentEnqueryDatas = res["items"];
+        //this.paymentEnqueryDatas = res;
         console.log(this.paymentEnqueryDatas);
         if (res['length'] === 0) {
           this.alertService.success("查無資料!");
