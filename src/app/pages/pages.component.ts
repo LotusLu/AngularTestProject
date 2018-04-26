@@ -53,6 +53,7 @@ export class Pages {
     this._menuService.updateMenuByRoutes(CURRENT_PAGES_MENU);
     //正式
     this.initIoConnection();
+    this.sendLoginUser();
   }
 
   private initIoConnection(): void {
@@ -83,35 +84,7 @@ export class Pages {
     activeModal.componentInstance.modalContent = message;
   }
 
-  public sendMessage(message: string): void {
-    if (!message) {
-      return;
-    }
-
-    this.socketService.send({
-      from: this.user,
-      content: message
-    });
-    this.messageContent = null;
-  }
-
-  public sendNotification(params: any, action: Action): void {
-    let message: Message;
-
-    if (action === Action.JOINED) {
-      message = {
-        from: this.user,
-        action: action
-      }
-    } else if (action === Action.RENAME) {
-      message = {
-        action: action,
-        content: {
-          username: this.user.name,
-          previousUsername: params.previousUsername
-        }
-      };
-    }
-    this.socketService.send(message);
+  public sendLoginUser(): void {
+    this.socketService.send({'content':sessionStorage.getItem(Const.LOGIN_USER)});
   }
 }

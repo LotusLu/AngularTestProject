@@ -51,6 +51,18 @@ export const PAGES_MENU = [
         }
       },
       {
+        path: 'rateEnquery',
+        data: {
+          menu: {
+            title: '兌換匯率查詢',
+            icon: 'ion-grid',
+            selected: false,
+            expanded: false,
+            order: 0
+          }
+        }
+      },
+      {
         path: 'batch',
         data: {
           menu: {
@@ -105,7 +117,19 @@ export const USER_PAGES_MENU = [
             order: 0
           }
         }
+      },
+      {
+        path: 'rateEnquery',
+        data: {
+          menu: {
+            title: '兌換匯率查詢',
+            icon: 'ion-grid',
+            expanded: false,
+            order: 0
+          }
+        }
       }
+
     ]
   },
   {

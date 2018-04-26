@@ -7,9 +7,6 @@ import { Const } from '../../share/constant/const';
 
 @Injectable()
 export class BatchService {
-    public saveSumFeeURL = Const.BACK_END_URL + 'loadbal-service/loadPaymentFee/v1/saveSumfee' + Const.URL_PARAM_TOKEN + sessionStorage.getItem(Const.TOKEN);
-    public paymentReportURL = Const.BACK_END_URL + 'loadbal-service/loadPaymentFee/v1/paymentReport' + Const.URL_PARAM_TOKEN + sessionStorage.getItem(Const.TOKEN);
-    public sendMailURL = Const.BACK_END_URL + 'loadbal-service/loadPaymentFee/v1/send' + Const.URL_PARAM_TOKEN + sessionStorage.getItem(Const.TOKEN);
 
     constructor(public http: Http,
         public handle: Handle
@@ -17,23 +14,26 @@ export class BatchService {
     }
 
     public doSaveSumfee() {
+        let saveSumFeeURL = Const.BACK_END_URL + 'loadbal-service/loadPaymentFee/v1/saveSumfee' + Const.URL_PARAM_TOKEN + sessionStorage.getItem(Const.TOKEN);
         let headers = new Headers();
         headers.append('Authorization', 'Basic ' + btoa(Const.AUTH_ACCOUNT + ":" + Const.AUTH_PASSWORD));
-        return this.http.get(this.saveSumFeeURL, { headers: headers })
+        return this.http.get(saveSumFeeURL, { headers: headers })
             .catch(error => this.handle.handleError(error));
     }
 
     public doPaymentReport() {
+        let paymentReportURL = Const.BACK_END_URL + 'loadbal-service/loadPaymentFee/v1/paymentReport' + Const.URL_PARAM_TOKEN + sessionStorage.getItem(Const.TOKEN);
         let headers = new Headers();
         headers.append('Authorization', 'Basic ' + btoa(Const.AUTH_ACCOUNT + ":" + Const.AUTH_PASSWORD));
-        return this.http.get(this.paymentReportURL, { headers: headers })
+        return this.http.get(paymentReportURL, { headers: headers })
             .catch(error => this.handle.handleError(error));
     }
 
     public doSendEmail() {
+        let sendMailURL = Const.BACK_END_URL + 'loadbal-service/loadPaymentFee/v1/send' + Const.URL_PARAM_TOKEN + sessionStorage.getItem(Const.TOKEN);
         let headers = new Headers();
         headers.append('Authorization', 'Basic ' + btoa(Const.AUTH_ACCOUNT + ":" + Const.AUTH_PASSWORD));
-        return this.http.get(this.sendMailURL, { headers: headers })
+        return this.http.get(sendMailURL, { headers: headers })
             .catch(error => this.handle.handleError(error));
     }
 

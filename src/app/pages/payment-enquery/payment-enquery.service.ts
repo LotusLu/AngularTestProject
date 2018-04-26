@@ -10,8 +10,6 @@ import { Const } from '../../share/constant/const';
 export class PaymentEnqueryService {
     //單機測試
     //public paymentEnqueryURL = "/meta/payment-enquery-mock.json";
-    //正式
-    public paymentEnqueryURL = Const.BACK_END_URL + "loadbal-service/loadPaymentFee/v1/queryUserItem" + Const.URL_PARAM_TOKEN + sessionStorage.getItem(Const.TOKEN);
 
     constructor(public http: Http,
         public handle: Handle
@@ -19,6 +17,8 @@ export class PaymentEnqueryService {
     }
 
     public queryPaymentList(searchUserId: string, channel: string) {
+        let paymentEnqueryURL = Const.BACK_END_URL + "loadbal-service/loadPaymentFee/v1/queryUserItem" + Const.URL_PARAM_TOKEN + sessionStorage.getItem(Const.TOKEN);
+
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
         headers.append('Authorization', 'Basic ' + btoa(Const.AUTH_ACCOUNT + ":" + Const.AUTH_PASSWORD));
@@ -27,7 +27,7 @@ export class PaymentEnqueryService {
         params.append('channel', channel);
         let options = new RequestOptions({ headers: headers, params: params });
 
-        return this.http.get(this.paymentEnqueryURL, options)
+        return this.http.get(paymentEnqueryURL, options)
             .catch(error => this.handle.handleError(error));
     }
 

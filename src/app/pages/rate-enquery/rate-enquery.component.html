@@ -1,3 +1,39 @@
-<p>
-  rate-enquery works!
-</p>
+<form [formGroup]="form" (ngSubmit)="onRateEnquery()" class="form-horizontal">
+  <div class="form-group row" [ngClass]="{'has-error': (!buyCcy.valid && buyCcy.touched), 'has-success': (buyCcy.valid && buyCcy.touched)}">
+    <label for="buyCcy" class="col-sm-2 control-label" translate>買入幣別</label>
+    <div class="col-sm-3">
+      <select [formControl]="buyCcy" class="form-control" id="buyCcy" (click)="resetField()">
+        <option *ngFor="let item of canUseCcys " value="{{item.ccyCode}}">{{item.ccyCode}} {{item.ccyChtName}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group row" [ngClass]="{'has-error': (!sellCcy.valid && sellCcy.touched), 'has-success': (sellCcy.valid && sellCcy.touched)}">
+    <label for="sellCcy" class="col-sm-2 control-label" translate>賣出幣別</label>
+    <div class="col-sm-3">
+      <select [formControl]="sellCcy" class="form-control" id="sellCcy" (click)="resetField()">
+        <option *ngFor="let item of canUseCcys " value="{{item.ccyCode}}">{{item.ccyCode}} {{item.ccyChtName}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group row" [ngClass]="{'has-error': (!rateType.valid && rateType.touched), 'has-success': (rateType.valid && rateType.touched)}">
+    <label for="rateType" class="col-sm-2 control-label" translate>即期/現鈔</label>
+    <div class="col-sm-2">
+      <select [formControl]="rateType" class="form-control" id="rateType" (click)="resetField()">
+        <option value="00">現鈔</option>
+        <option value="01">即期</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group row has-warning ">
+    <label class="col-sm-2 control-label" translate>兌換匯率</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" id="exchangeRate" value="{{exchangeRate}}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="offset-sm-2 col-sm-10">
+      <alert></alert>
+      <button [disabled]="!form.valid" type="submit" class="btn btn-default btn-auth" translate>查詢</button>
+    </div>
+  </div>
+</form>

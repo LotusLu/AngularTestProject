@@ -1,0 +1,84 @@
+{
+    "ccys": [
+        {
+            "ccyCode": "TWD",
+            "ccyChtName": "新台幣"
+        },
+        {
+            "ccyCode": "USD",
+            "ccyChtName": "美元"
+        },
+        {
+            "ccyCode": "HKD",
+            "ccyChtName": "港幣"
+        },
+        {
+            "ccyCode": "AUD",
+            "ccyChtName": "澳幣"
+        },
+        {
+            "ccyCode": "CAD",
+            "ccyChtName": "加幣"
+        },
+        {
+            "ccyCode": "CHF",
+            "ccyChtName": "瑞士法郎"
+        },
+        {
+            "ccyCode": "CNY",
+            "ccyChtName": "人民幣"
+        },
+        {
+            "ccyCode": "CZK",
+            "ccyChtName": "捷克克郎"
+        },
+        {
+            "ccyCode": "DKK",
+            "ccyChtName": "丹麥克郎"
+        },
+        {
+            "ccyCode": "EUR",
+            "ccyChtName": "歐元"
+        },
+        {
+            "ccyCode": "GBP",
+            "ccyChtName": "英鎊"
+        },
+        {
+            "ccyCode": "IDR",
+            "ccyChtName": "印尼盧比"
+        },
+        {
+            "ccyCode": "JPY",
+            "ccyChtName": "日圓"
+        },
+        {
+            "ccyCode": "KRW",
+            "ccyChtName": "韓元"
+        },
+        {
+            "ccyCode": "MXN",
+            "ccyChtName": "墨西哥比索"
+        },
+        {
+            "ccyCode": "NZD",
+            "ccyChtName": "紐西蘭幣"
+        },
+        {
+            "ccyCode": "PHP",
+            "ccyChtName": "菲律賓比索"
+        },
+        {
+            "ccyCode": "RUB",
+            "ccyChtName": "俄羅斯盧布"
+        },
+        {
+            "ccyCode": "SEK",
+            "ccyChtName": "新加坡幣"
+        },
+        {
+            "ccyCode": "THB",
+            "ccyChtName": "泰銖"
+        }
+    ]
+}

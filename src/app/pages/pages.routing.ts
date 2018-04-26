@@ -1,4 +1,4 @@
-import { Routes, RouterModule }  from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 import { Pages } from './pages.component';
 import { ModuleWithProviders } from '@angular/core';
 
@@ -14,6 +14,7 @@ export const routes: Routes = [
       { path: '', redirectTo: 'workingSpace', pathMatch: 'full' },
       { path: 'workingSpace', loadChildren: './working-space/working-space.module#WorkingSpaceModule' },
       { path: 'paymentEnquery', loadChildren: './payment-enquery/payment-enquery.module#PaymentEnqueryModule' },
+      { path: 'rateEnquery', loadChildren: './rate-enquery/rate-enquery.module#RateEnqueryModule' },
       { path: 'payment', loadChildren: './payment/payment.module#PaymentModule' },
       { path: 'paymentFee', loadChildren: './paymentFee/paymentFee.module#PaymentFeeModule' },
       { path: 'batch', loadChildren: './batch-test/batch-test.module#BatchModule' }

@@ -13,7 +13,6 @@ import { PaymentEnqueryData } from '../payment-enquery/payment-enquery-data/paym
 })
 export class PaymentComponent implements OnInit {
   paymentEnqueryDatas: PaymentEnqueryData[];
-  public paymentUploadURL = Const.BACK_END_URL + "/loadbal-service/loadPaymentFee/v1/sendFile" + Const.URL_PARAM_TOKEN + sessionStorage.getItem(Const.TOKEN);;
   selectFileName: string;
   selectedFile: File;
 
@@ -40,13 +39,14 @@ export class PaymentComponent implements OnInit {
 
   public onUpload() {
     if (this.selectedFile) {
+      let paymentUploadURL = Const.BACK_END_URL + "/loadbal-service/loadPaymentFee/v1/sendFile" + Const.URL_PARAM_TOKEN + sessionStorage.getItem(Const.TOKEN);;
       let headers = new Headers();
       headers.append('Authorization', 'Basic ' + btoa(Const.AUTH_ACCOUNT + ":" + Const.AUTH_PASSWORD));
       let options = new RequestOptions({ headers: headers });
       const formData = new FormData();
       formData.append("file", this.selectedFile, this.selectedFile.name);
       formData.append("appId", sessionStorage.getItem(Const.CHANNEL));
-      this.http.post(this.paymentUploadURL, formData, options)
+      this.http.post(paymentUploadURL, formData, options)
         .catch(error => this.handle.handleError(error))
         .map(res => {
           console.log(res);

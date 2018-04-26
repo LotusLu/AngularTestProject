@@ -7,25 +7,31 @@ export class IconsService {
   icons = {
     adminFunction: [
       {
-        color: 'danger',
+        color: 'success',
         img: 'Laptop-Signal',
         name: '企業上傳',
         path: '/pages/payment'
       },
       {
-        color: 'danger',
+        color: 'warning',
         img: 'Euro-Coin',
         name: '繳費',
         path: '/pages/paymentFee'
       },
       {
-        color: 'warning',
+        color: 'primary',
         img: 'Money-Increase',
         name: '繳費單查詢',
         path: '/pages/paymentEnquery'
       },
       {
-        color: 'warning',
+        color: 'danger',
+        img: 'Checklist',
+        name: '兌換匯率查詢',
+        path: '/pages/rateEnquery'
+      },
+      {
+        color: 'info',
         img: 'Bell',
         name: '批次測試',
         path: '/pages/batch'

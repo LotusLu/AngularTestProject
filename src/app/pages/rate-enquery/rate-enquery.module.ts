@@ -22,4 +22,4 @@ import { RateEnqueryComponent } from './rate-enquery.component';
     RateEnqueryComponent
   ]
 })
-export class PaymentModule { }
+export class RateEnqueryModule { }
