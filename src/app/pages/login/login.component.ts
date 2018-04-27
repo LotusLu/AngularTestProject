@@ -44,7 +44,7 @@ export class Login {
     //初始化則執行登出動作
     this.loginService.logout();
     //通路預設7-11
-    this.channel.patchValue("711");
+    this.channel.patchValue("7-11");
   }
   public userLoginURL = 'meta/user-login-mock.json';
 

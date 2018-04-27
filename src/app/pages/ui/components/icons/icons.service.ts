@@ -41,11 +41,22 @@ export class IconsService {
     userFunction: [
       {
         color: 'warning',
+        img: 'Euro-Coin',
+        name: '繳費',
+        path: '/pages/paymentFee'
+      },
+      {
+        color: 'warning',
         img: 'Money-Increase',
         name: '繳費單查詢',
         path: '/pages/paymentEnquery'
+      },
+      {
+        color: 'danger',
+        img: 'Checklist',
+        name: '兌換匯率查詢',
+        path: '/pages/rateEnquery'
       }
-
     ],
   };
 

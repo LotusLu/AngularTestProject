@@ -23,7 +23,7 @@ export class PaymentEnqueryComponent implements OnInit {
     private alertService: AlertService
   ) {
     this.form = fb.group({
-      'userId': ['', Validators.compose([Validators.required, Validators.minLength(4)])],
+      'userId': ['', Validators.compose([Validators.required, Validators.minLength(3)])],
     });
     this.userId = this.form.controls['userId'];
   }

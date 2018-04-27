@@ -41,8 +41,22 @@ export class PaymentFeeComponent implements OnInit {
   }
 
   public onPayment() {
-    console.log(this.custId.value);
-    console.log(this.feeCode.value);
-    console.log(this.accountNumber.value);
+    let paymentFeeURL = Const.BACK_END_URL + "/compute-service/paymentFee/v1/updatePaymentFee" + Const.URL_PARAM_TOKEN + sessionStorage.getItem(Const.TOKEN);
+    const formData = new FormData();
+    formData.append("custId", this.custId.value);
+    formData.append("feeCode", this.feeCode.value);
+    formData.append("accountNumber", this.accountNumber.value);
+    this.http.post(paymentFeeURL, formData)
+      .catch(error => this.handle.handleError(error))
+      .subscribe(
+        data => {
+          this.alertService.success(data['_body']);
+        },
+        error => {
+          console.log(error);
+          this.alertService.error(error);
+        }
+      );
+
   }
 }
